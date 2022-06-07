@@ -8,9 +8,19 @@ pub struct Gameplay {
 
 #[derive(Debug)]
 pub enum Points {
-    Max = 10,
-    Med = 5,
-    Min = 1,
+    Max,
+    Med,
+    Min,
+}
+
+impl Points {
+    pub fn get_the_points_value(points: Points) -> u8 {
+        match points {
+            Points::Max => 10,
+            Points::Med => 5,
+            Points::Min => 1,
+        }
+    }
 }
 
 // add_points
@@ -29,6 +39,6 @@ impl Gameplay {
     }
 
     pub fn add_points(&mut self, points: Points) {
-        self.points += 1; //Points::Max;
+        self.points += Points::get_the_points_value(points);
     }
 }
