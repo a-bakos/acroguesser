@@ -1,32 +1,12 @@
+use crate::points::Points;
+
 #[derive(Debug)]
 pub struct Gameplay {
-    player_name: String,
-    history: Vec<usize>,
-    points: u8,
-    tries: u8,
+    pub player_name: String,
+    pub history: Vec<usize>,
+    pub points: u8,
+    pub tries: u8,
 }
-
-#[derive(Debug)]
-pub enum Points {
-    Max,
-    Med,
-    Min,
-}
-
-impl Points {
-    pub fn get_the_points_value(points: Points) -> u8 {
-        match points {
-            Points::Max => 10,
-            Points::Med => 5,
-            Points::Min => 1,
-        }
-    }
-}
-
-// add_points
-// store_in_history
-// increase_tries
-// store_player_name
 
 impl Gameplay {
     pub fn new(player_name: String) -> Self {
@@ -39,6 +19,10 @@ impl Gameplay {
     }
 
     pub fn add_points(&mut self, points: Points) {
-        self.points += Points::get_the_points_value(points);
+        self.points += Points::add_points_value(points);
     }
+
+    // store_in_history
+    // increase_tries
+    // store_player_name
 }

@@ -1,14 +1,17 @@
-use crate::gameplay::Gameplay;
-use crate::gameplay::Points;
-
 mod gameplay;
+mod gui;
 mod journal;
+mod points;
+
+use crate::gameplay::Gameplay;
+use crate::gui::GUI;
+use crate::points::Points;
 
 fn main() {
-    println!("Hello, world!");
-
-    let mut game = Gameplay::new(String::from("abakos"));
+    let player_name: String = String::from("abakos");
+    let mut game = Gameplay::new(player_name);
     game.add_points(Points::Max);
+    GUI::render(GUI::Start(&game.player_name));
 
     println!("{:?}", game);
 }
