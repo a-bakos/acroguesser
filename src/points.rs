@@ -1,6 +1,4 @@
-const MAX_POINTS: u8 = 10;
-const MED_POINTS: u8 = 5;
-const MIN_POINTS: u8 = 1;
+use crate::consts;
 
 #[derive(Debug)]
 pub enum Points {
@@ -12,9 +10,9 @@ pub enum Points {
 impl Points {
     pub fn add_points_value(points: Points) -> u8 {
         match points {
-            Points::Max => MAX_POINTS,
-            Points::Med => MED_POINTS,
-            Points::Min => MIN_POINTS,
+            Points::Max => consts::MAX_POINTS,
+            Points::Med => consts::MED_POINTS,
+            Points::Min => consts::MIN_POINTS,
         }
     }
 }

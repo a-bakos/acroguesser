@@ -1,8 +1,8 @@
-const JOURNALS_API_ENDPOINT: &str = "";
+use crate::consts;
 
 pub struct Journal {
     title: String,
-    acronym: [String; 4],
+    acronym: [String; consts::ACRONYM_LEN],
 }
 
 impl Journal {

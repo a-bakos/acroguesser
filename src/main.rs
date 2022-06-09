@@ -1,3 +1,4 @@
+mod consts;
 mod gameplay;
 mod gui;
 mod journal;
