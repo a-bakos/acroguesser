@@ -8,8 +8,15 @@ use crate::gameplay::Gameplay;
 use crate::gui::GUI;
 use crate::points::Points;
 
+use std::io;
+
 fn main() {
-    let player_name: String = String::from("abakos");
+    let mut player_name: String = String::new();
+    io::stdin()
+        .read_line(&mut player_name)
+        .expect("Failed to read player name!");
+    let player_name: String = player_name.trim().to_string();
+
     let mut game = Gameplay::new(player_name);
     game.add_points(Points::Max);
     GUI::render(GUI::Start(&game.player_name));

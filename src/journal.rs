@@ -1,8 +1,8 @@
-use crate::consts;
+// use crate::consts;
 
 pub struct Journal {
     title: String,
-    acronym: [String; consts::ACRONYM_LEN],
+    acronym: [String; 4],
 }
 
 impl Journal {
