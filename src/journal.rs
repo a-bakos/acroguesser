@@ -21,10 +21,21 @@ impl Journal {
         }
     }
 
+    pub fn get_journal_list() {}
+    pub fn store_journal_list() {}
+
     pub fn get_random_journal() -> Self {
         // TODO add logic here later; for now just return
         // a new instance
         Self::new()
+    }
+
+    pub fn is_letter_in_acronym(&self, letter: &str) -> bool {
+        if self.acronym.contains(letter) {
+            true
+        } else {
+            false
+        }
     }
 }
 
@@ -33,7 +44,3 @@ impl Journal {
 // validate journal
 // is_title_ok
 // is_acronym_ok
-// get_random_journal
-// get_journal_list
-// store_journal_list
-// is_letter_in_acronym
