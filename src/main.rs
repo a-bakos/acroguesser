@@ -17,16 +17,23 @@ fn main() {
     io::stdin()
         .read_line(&mut player_name)
         .expect("Failed to read player name!");
+
     let player_name: String = player_name.trim().to_string();
 
     let mut game = Gameplay::new(player_name);
+    GUI::render(GUI::Start(&game.player_name));
+    // game initialised
+    println!("{:?}", game);
 
     loop {
+        // get a journal to guess
         let journal = Journal::get_random_journal();
+        GUI::render(GUI::JournalTitle(&journal.title));
+        game.add_points(Points::Max);
+        println!("{:?}", game);
+
+        break;
     }
 
-    game.add_points(Points::Max);
-    GUI::render(GUI::Start(&game.player_name));
-
-    println!("{:?}", game);
+    GUI::render(GUI::End);
 }

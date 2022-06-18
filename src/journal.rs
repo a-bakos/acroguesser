@@ -1,9 +1,10 @@
 // use crate::consts;
 
+#[derive(Debug)]
 pub struct Journal {
-    title: String,
+    pub title: String,
     acronym_letters: [String; 4],
-    acronym: String,
+    pub acronym: String,
 }
 
 impl Journal {
