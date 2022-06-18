@@ -36,9 +36,12 @@ fn main() {
             .expect("Failed to read user's guess!");
         let acro_guess: String = acro_guess.trim().to_string();
         println!("Your guess: {}", acro_guess);
-        game.increase_tries();
 
+        // in-game logic
+        game.increase_tries();
+        game.store_in_history(acro_guess);
         game.add_points(Points::Max);
+
         println!("{:?}", game);
 
         break;

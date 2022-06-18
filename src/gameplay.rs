@@ -4,7 +4,7 @@ use crate::points::Points;
 pub struct Gameplay {
     pub player_name: String,
     pub points: u8,
-    pub history: Vec<usize>,
+    pub history: Vec<String>,
     pub tries: u8,
 }
 
@@ -26,7 +26,9 @@ impl Gameplay {
         self.tries += 1;
     }
 
-    // store_in_history
+    pub fn store_in_history(&mut self, acronym: String) {
+        self.history.push(acronym);
+    }
     // increase_tries
     // store_player_name
 }
