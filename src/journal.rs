@@ -2,20 +2,28 @@
 
 pub struct Journal {
     title: String,
-    acronym: [String; 4],
+    acronym_letters: [String; 4],
+    acronym: String,
 }
 
 impl Journal {
     pub fn new() -> Self {
         Self {
             title: String::from("Hello title"),
-            acronym: [
+            acronym: String::from("ABCD"),
+            acronym_letters: [
                 String::from("A"),
                 String::from("B"),
                 String::from("C"),
                 String::from("D"),
             ],
         }
+    }
+
+    pub fn get_random_journal() -> Self {
+        // TODO add logic here later; for now just return
+        // a new instance
+        Self::new()
     }
 }
 

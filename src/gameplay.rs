@@ -3,8 +3,8 @@ use crate::points::Points;
 #[derive(Debug)]
 pub struct Gameplay {
     pub player_name: String,
-    pub history: Vec<usize>,
     pub points: u8,
+    pub history: Vec<usize>,
     pub tries: u8,
 }
 
