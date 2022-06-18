@@ -29,6 +29,15 @@ fn main() {
         // get a journal to guess
         let journal = Journal::get_random_journal();
         GUI::render(GUI::JournalTitle(&journal.title));
+
+        let mut acro_guess: String = String::new();
+        io::stdin()
+            .read_line(&mut acro_guess)
+            .expect("Failed to read user's guess!");
+        let acro_guess: String = acro_guess.trim().to_string();
+        println!("Your guess: {}", acro_guess);
+        game.increase_tries();
+
         game.add_points(Points::Max);
         println!("{:?}", game);
 

@@ -22,6 +22,10 @@ impl Gameplay {
         self.points += Points::add_points_value(points);
     }
 
+    pub fn increase_tries(&mut self) {
+        self.tries += 1;
+    }
+
     // store_in_history
     // increase_tries
     // store_player_name
