@@ -37,6 +37,14 @@ impl Journal {
             false
         }
     }
+
+    pub fn is_matching_guess(&self, user_guess: &String) -> bool {
+        if self.acronym.to_lowercase() == user_guess.to_lowercase() {
+            true
+        } else {
+            false
+        }
+    }
 }
 
 // get_journal_by_acronym

@@ -42,13 +42,20 @@ fn main() {
                 .expect("Failed to read user's guess!");
             let acro_guess: String = acro_guess.trim().to_string();
             println!("Your guess: {}", acro_guess);
+
+            if journal.is_matching_guess(&acro_guess) {
+                game.add_points(Points::Max);
+                GUI::render(GUI::Win);
+                break;
+            } else {
+                GUI::render(GUI::TryAgain);
+            }
+
             game.increase_tries();
             game.store_in_history(acro_guess);
 
             counter = counter + 1;
         }
-
-        game.add_points(Points::Max);
 
         println!("{:?}", game);
 

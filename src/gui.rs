@@ -3,6 +3,8 @@ pub enum GUI<'a> {
     End,
     WaitingPlayerName,
     JournalTitle(&'a str),
+    Win,
+    TryAgain,
 }
 
 impl GUI<'_> {
@@ -12,6 +14,8 @@ impl GUI<'_> {
             GUI::End => println!("Bye!\n"),
             GUI::WaitingPlayerName => println!("Enter a player name:\n"),
             GUI::JournalTitle(title) => println!("Here's the title: {}!\n", title),
+            GUI::Win => println!("WINNER! You guessed it correctly!"),
+            GUI::TryAgain => println!("Try again!"),
         }
     }
 }
