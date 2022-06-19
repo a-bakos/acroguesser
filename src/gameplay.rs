@@ -29,6 +29,6 @@ impl Gameplay {
     pub fn store_in_history(&mut self, acronym: String) {
         self.history.push(acronym);
     }
-    // increase_tries
+
     // store_player_name
 }
