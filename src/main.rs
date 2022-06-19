@@ -54,7 +54,7 @@ fn main() {
             game.increase_tries();
             game.store_in_history(user_guess);
 
-            rounds_counter = rounds_counter + 1;
+            rounds_counter += 1;
         }
 
         println!("{:?}", game);

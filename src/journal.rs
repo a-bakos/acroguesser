@@ -31,24 +31,10 @@ impl Journal {
     }
 
     pub fn is_letter_in_acronym(&self, letter: &str) -> bool {
-        if self.acronym.contains(letter) {
-            true
-        } else {
-            false
-        }
+        self.acronym.contains(letter)
     }
 
-    pub fn is_matching_guess(&self, user_guess: &String) -> bool {
-        if self.acronym.to_lowercase() == user_guess.to_lowercase() {
-            true
-        } else {
-            false
-        }
+    pub fn is_matching_guess(&self, user_guess: &str) -> bool {
+        self.acronym.to_lowercase() == user_guess.to_lowercase()
     }
 }
-
-// get_journal_by_acronym
-// get_journal_by_title
-// validate journal
-// is_title_ok
-// is_acronym_ok
