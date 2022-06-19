@@ -28,3 +28,5 @@ Gameplay:
 	- Journal imprint
 - Limit guesses and/or decrease points per iteration
 - Store/update user game profile as text file
+- Colorised terminal text
+- Clear terminal on each game loop and show game details
