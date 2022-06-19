@@ -1,18 +1,22 @@
-use crate::consts;
-
 #[derive(Debug)]
 pub enum Points {
-    Max,
-    Med,
-    Min,
+    Round5,
+    Round4,
+    Round3,
+    Round2,
+    Round1,
+    NoPoint,
 }
 
 impl Points {
-    pub fn add_points_value(points: Points) -> u8 {
+    pub fn get_points_value(points: Points) -> u8 {
         match points {
-            Points::Max => consts::MAX_POINTS,
-            Points::Med => consts::MED_POINTS,
-            Points::Min => consts::MIN_POINTS,
+            Points::Round5 => 1,
+            Points::Round4 => 2,
+            Points::Round3 => 3,
+            Points::Round2 => 4,
+            Points::Round1 => 5,
+            Points::NoPoint => 0,
         }
     }
 }

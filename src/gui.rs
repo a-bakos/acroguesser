@@ -5,6 +5,7 @@ pub enum GUI<'a> {
     JournalTitle(&'a str),
     Win,
     TryAgain,
+    MaxTriesReached,
 }
 
 impl GUI<'_> {
@@ -16,6 +17,9 @@ impl GUI<'_> {
             GUI::JournalTitle(title) => println!("Here's the title: {}!\n", title),
             GUI::Win => println!("WINNER! You guessed it correctly!"),
             GUI::TryAgain => println!("Try again!"),
+            GUI::MaxTriesReached => {
+                println!("You've reached the maximum number of tries and lost this round.")
+            }
         }
     }
 }

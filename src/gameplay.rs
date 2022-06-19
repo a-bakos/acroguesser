@@ -18,8 +18,21 @@ impl Gameplay {
         }
     }
 
-    pub fn add_points(&mut self, points: Points) {
-        self.points += Points::add_points_value(points);
+    pub fn add_points(&mut self, rounds: u8) {
+        let points: Points = self.calculate_points(rounds);
+        self.points += Points::get_points_value(points);
+    }
+
+    fn calculate_points(&self, rounds: u8) -> Points {
+        let points: Points = match rounds {
+            1 => Points::Round1,
+            2 => Points::Round2,
+            3 => Points::Round3,
+            4 => Points::Round4,
+            5 => Points::Round5,
+            _ => Points::NoPoint,
+        };
+        points
     }
 
     pub fn increase_tries(&mut self) {

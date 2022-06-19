@@ -7,7 +7,6 @@ mod points;
 use crate::gameplay::Gameplay;
 use crate::gui::GUI;
 use crate::journal::Journal;
-use crate::points::Points;
 
 use std::io;
 
@@ -30,21 +29,22 @@ fn main() {
         let journal = Journal::get_random_journal();
         GUI::render(GUI::JournalTitle(&journal.title));
 
-        let mut counter: u8 = 0;
+        let mut rounds_counter: u8 = 0;
         loop {
-            if counter == consts::MAX_TRIES {
+            if rounds_counter == consts::MAX_TRIES {
+                GUI::render(GUI::MaxTriesReached);
                 break;
             }
 
-            let mut acro_guess: String = String::new();
+            let mut user_guess: String = String::new();
             io::stdin()
-                .read_line(&mut acro_guess)
+                .read_line(&mut user_guess)
                 .expect("Failed to read user's guess!");
-            let acro_guess: String = acro_guess.trim().to_string();
-            println!("Your guess: {}", acro_guess);
+            let user_guess: String = user_guess.trim().to_string();
+            println!("Your guess: {}", user_guess);
 
-            if journal.is_matching_guess(&acro_guess) {
-                game.add_points(Points::Max);
+            if journal.is_matching_guess(&user_guess) {
+                game.add_points(rounds_counter);
                 GUI::render(GUI::Win);
                 break;
             } else {
@@ -52,9 +52,9 @@ fn main() {
             }
 
             game.increase_tries();
-            game.store_in_history(acro_guess);
+            game.store_in_history(user_guess);
 
-            counter = counter + 1;
+            rounds_counter = rounds_counter + 1;
         }
 
         println!("{:?}", game);
