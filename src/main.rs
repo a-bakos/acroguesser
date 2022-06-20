@@ -13,6 +13,8 @@ use crate::journals::Journals;
 use std::io;
 
 fn main() {
+    // player setup
+
     let mut player_name: String = String::new();
     GUI::render(GUI::WaitingPlayerName);
     io::stdin()
@@ -25,14 +27,19 @@ fn main() {
     }
 
     let mut game = Gameplay::new(player_name);
+
+    // game loop setup
+
     GUI::render(GUI::Start(&game.player_name));
     // game initialised
     println!("{:?}", game);
     let journals = Journals::new();
+    // get a journal to guess
+    let journal: &Journal = Journals::get_random_journal(&journals);
+
+    // gameloop start
 
     loop {
-        // get a journal to guess
-        let journal: &Journal = Journals::get_random_journal(&journals);
         GUI::render(GUI::JournalTitle(&journal.title));
 
         let mut rounds_counter: u8 = 0;
@@ -69,6 +76,7 @@ fn main() {
 
         println!("{:?}", game);
 
+        // temp break
         break;
     }
 
