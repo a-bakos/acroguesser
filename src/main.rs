@@ -2,11 +2,13 @@ mod consts;
 mod gameplay;
 mod gui;
 mod journal;
+mod journals;
 mod points;
 
 use crate::gameplay::Gameplay;
 use crate::gui::GUI;
 use crate::journal::Journal;
+use crate::journals::Journals;
 
 use std::io;
 
@@ -26,10 +28,11 @@ fn main() {
     GUI::render(GUI::Start(&game.player_name));
     // game initialised
     println!("{:?}", game);
+    let journals = Journals::new();
 
     loop {
         // get a journal to guess
-        let journal = Journal::get_random_journal();
+        let journal: &Journal = Journals::get_random_journal(&journals);
         GUI::render(GUI::JournalTitle(&journal.title));
 
         let mut rounds_counter: u8 = 0;
