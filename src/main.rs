@@ -40,21 +40,25 @@ fn main() {
             io::stdin()
                 .read_line(&mut user_guess)
                 .expect("Failed to read user's guess!");
+
             let user_guess: String = user_guess.trim().to_string();
-            println!("Your guess: {}", user_guess);
+            if user_guess.len() >= 1 {
+                println!("Your guess: {}", user_guess);
 
-            if journal.is_matching_guess(&user_guess) {
-                game.add_points(rounds_counter);
-                GUI::render(GUI::Win);
-                break;
+                if journal.is_matching_guess(&user_guess) {
+                    game.add_points(rounds_counter);
+                    GUI::render(GUI::Win);
+                    break;
+                } else {
+                    GUI::render(GUI::TryAgain);
+                }
+
+                game.increase_tries();
+                game.store_in_history(user_guess);
+                rounds_counter += 1;
             } else {
-                GUI::render(GUI::TryAgain);
+                GUI::render(GUI::EmptyInput);
             }
-
-            game.increase_tries();
-            game.store_in_history(user_guess);
-
-            rounds_counter += 1;
         }
 
         println!("{:?}", game);

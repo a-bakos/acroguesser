@@ -5,6 +5,7 @@ pub enum GUI<'a> {
     JournalTitle(&'a str),
     Win,
     TryAgain,
+    EmptyInput,
     MaxTriesReached,
 }
 
@@ -20,6 +21,7 @@ impl GUI<'_> {
             GUI::MaxTriesReached => {
                 println!("You've reached the maximum number of tries and lost this round.")
             }
+            GUI::EmptyInput => println!("Empty input. Type in your guess."),
         }
     }
 }
