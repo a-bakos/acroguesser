@@ -17,7 +17,10 @@ fn main() {
         .read_line(&mut player_name)
         .expect("Failed to read player name!");
 
-    let player_name: String = player_name.trim().to_string();
+    player_name = player_name.trim().to_string();
+    if player_name.len() == 0 {
+        player_name = String::from("Player");
+    }
 
     let mut game = Gameplay::new(player_name);
     GUI::render(GUI::Start(&game.player_name));
