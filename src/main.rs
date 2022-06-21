@@ -52,14 +52,15 @@ fn main() {
                 break;
             }
 
+            // deal with guess input
             let mut user_guess: String = String::new();
             io::stdin()
                 .read_line(&mut user_guess)
                 .expect(consts::ERROR_READING_USER_GUESS);
-
             let user_guess: String = user_guess.trim().to_string();
+
             if !user_guess.is_empty() {
-                println!("Your guess: {}", user_guess);
+                GUI::render(GUI::YourGuess(&user_guess));
 
                 if journal.is_matching_guess(&user_guess) {
                     game.add_points(rounds_counter);
@@ -70,7 +71,7 @@ fn main() {
                 }
 
                 game.increase_tries();
-                game.store_in_history(user_guess);
+                game.store_in_guess_history(user_guess);
                 rounds_counter += 1;
             } else {
                 GUI::render(GUI::EmptyInput);

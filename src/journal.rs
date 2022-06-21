@@ -3,7 +3,6 @@
 #[derive(Debug)]
 pub struct Journal {
     pub title: String,
-    //acronym_letters: [String; 4],
     pub acronym: String,
 }
 

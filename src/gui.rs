@@ -7,6 +7,7 @@ pub enum GUI<'a> {
     TryAgain,
     EmptyInput,
     MaxTriesReached,
+    YourGuess(&'a str),
 }
 
 impl GUI<'_> {
@@ -22,6 +23,7 @@ impl GUI<'_> {
                 println!("You've reached the maximum number of tries and lost this round. Here's another one to guess.")
             }
             GUI::EmptyInput => println!("Empty input. Type in your guess."),
+            GUI::YourGuess(guess) => println!("Your guess was: {}", guess),
         }
     }
 }

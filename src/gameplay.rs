@@ -39,7 +39,7 @@ impl Gameplay {
         self.tries += 1;
     }
 
-    pub fn store_in_history(&mut self, acronym: String) {
+    pub fn store_in_guess_history(&mut self, acronym: String) {
         self.history.push(acronym.to_lowercase());
     }
 
