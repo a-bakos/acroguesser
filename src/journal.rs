@@ -12,12 +12,6 @@ impl Journal {
         Self {
             title: String::new(),
             acronym: String::new(),
-            // acronym_letters: [
-            //     String::from("A"),
-            //     String::from("B"),
-            //     String::from("C"),
-            //     String::from("D"),
-            // ],
         }
     }
 
@@ -27,5 +21,9 @@ impl Journal {
 
     pub fn is_matching_guess(&self, user_guess: &str) -> bool {
         self.acronym.to_lowercase() == user_guess.to_lowercase()
+    }
+
+    pub fn is_journal_in_history(&self, game_history: &[String]) -> bool {
+        game_history.contains(&self.acronym)
     }
 }

@@ -19,7 +19,7 @@ impl GUI<'_> {
             GUI::Win => println!("WINNER! You guessed it correctly!"),
             GUI::TryAgain => println!("Try again!"),
             GUI::MaxTriesReached => {
-                println!("You've reached the maximum number of tries and lost this round.")
+                println!("You've reached the maximum number of tries and lost this round. Here's another one to guess.")
             }
             GUI::EmptyInput => println!("Empty input. Type in your guess."),
         }

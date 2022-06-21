@@ -12,7 +12,7 @@ impl Gameplay {
     pub fn new(player_name: String) -> Self {
         Self {
             player_name,
-            history: vec![],
+            history: vec!["abcd".to_string()],
             points: 0,
             tries: 0,
         }
@@ -40,7 +40,7 @@ impl Gameplay {
     }
 
     pub fn store_in_history(&mut self, acronym: String) {
-        self.history.push(acronym);
+        self.history.push(acronym.to_lowercase());
     }
 
     // store_player_name

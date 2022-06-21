@@ -10,22 +10,27 @@ impl Journals {
             all: vec![
                 Journal {
                     title: String::from("The title 1"),
-                    acronym: String::from("ABCD"),
+                    acronym: "ABCD".to_lowercase(),
                 },
                 Journal {
                     title: String::from("The title 2"),
-                    acronym: String::from("EFGH"),
+                    acronym: "EFGH".to_lowercase(),
                 },
             ],
         }
     }
 
-    pub fn get_journal_list() {}
-    pub fn store_journal_list() {}
+    //pub fn get_journal_list() {}
+    //pub fn store_journal_list() {}
 
     pub fn get_random_journal(&self) -> &Journal {
+        let _len = self.all.len();
         // TODO add logic here later; for now just return
         // a new instance
+
+        // is journal in history
+
+        // machine chosen history
 
         // Process random selection
         // - make sure its acro is 4 char len

@@ -14,36 +14,39 @@ use std::io;
 
 fn main() {
     // player setup
-
     let mut player_name: String = String::new();
     GUI::render(GUI::WaitingPlayerName);
     io::stdin()
         .read_line(&mut player_name)
-        .expect("Failed to read player name!");
+        .expect(consts::ERROR_READING_PLAYER_NAME);
 
     player_name = player_name.trim().to_string();
-    if player_name.len() == 0 {
-        player_name = String::from("Player");
+    if player_name.is_empty() {
+        player_name = String::from(consts::DEFAULT_PLAYER_NAME);
     }
 
-    let mut game = Gameplay::new(player_name);
-
     // game loop setup
-
-    GUI::render(GUI::Start(&game.player_name));
-    // game initialised
+    let mut game = Gameplay::new(player_name);
     println!("{:?}", game);
     let journals = Journals::new();
-    // get a journal to guess
-    let journal: &Journal = Journals::get_random_journal(&journals);
+    GUI::render(GUI::Start(&game.player_name));
 
     // gameloop start
-
+    // outer loop for main rounds
     loop {
-        GUI::render(GUI::JournalTitle(&journal.title));
-
         let mut rounds_counter: u8 = 0;
+
+        // get a journal to guess
+        // journal setup
+        let mut journal: &Journal = Journals::get_random_journal(&journals);
+        // check if journal is in history, get another one if so
+        if journal.is_journal_in_history(&game.history) {
+            journal = Journals::get_random_journal(&journals);
+        }
+
         loop {
+            GUI::render(GUI::JournalTitle(&journal.title));
+
             if rounds_counter == consts::MAX_TRIES {
                 GUI::render(GUI::MaxTriesReached);
                 break;
@@ -52,10 +55,10 @@ fn main() {
             let mut user_guess: String = String::new();
             io::stdin()
                 .read_line(&mut user_guess)
-                .expect("Failed to read user's guess!");
+                .expect(consts::ERROR_READING_USER_GUESS);
 
             let user_guess: String = user_guess.trim().to_string();
-            if user_guess.len() >= 1 {
+            if !user_guess.is_empty() {
                 println!("Your guess: {}", user_guess);
 
                 if journal.is_matching_guess(&user_guess) {
@@ -81,4 +84,8 @@ fn main() {
     }
 
     GUI::render(GUI::End);
+}
+
+fn exit_listener(user_command: String) -> bool {
+    user_command == consts::CMD_QUIT_E || user_command == consts::CMD_QUIT_EXIT
 }
