@@ -30,3 +30,6 @@ Gameplay:
 - Store/update user game profile as text file
 - Colorised terminal text
 - Clear terminal on each game loop and show game details
+
+- Game menu
+- User profile: name, points, game history,

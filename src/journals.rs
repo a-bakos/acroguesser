@@ -1,4 +1,5 @@
 use crate::Journal;
+use rand::{thread_rng, Rng};
 
 pub struct Journals {
     pub all: Vec<Journal>,
@@ -24,9 +25,9 @@ impl Journals {
     //pub fn store_journal_list() {}
 
     pub fn get_random_journal(&self) -> &Journal {
-        let _len = self.all.len();
-        // TODO add logic here later; for now just return
-        // a new instance
+        let len = self.all.len();
+        let mut rng = thread_rng();
+        let index: u32 = rng.gen_range(0..=len as u32);
 
         // is journal in history
 
@@ -37,6 +38,6 @@ impl Journals {
         // - must have a title
         // - shouldn't start wit number
 
-        &self.all[0]
+        &self.all[index as usize]
     }
 }
