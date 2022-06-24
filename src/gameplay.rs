@@ -1,4 +1,5 @@
 use crate::points::Points;
+use crate::Player;
 
 #[derive(Debug)]
 pub struct Gameplay {
@@ -9,9 +10,9 @@ pub struct Gameplay {
 }
 
 impl Gameplay {
-    pub fn new(player_name: String) -> Self {
+    pub fn new(player: Player) -> Self {
         Self {
-            player_name,
+            player_name: player.name,
             history: vec!["abcd".to_string()],
             points: 0,
             tries: 0,

@@ -1,4 +1,4 @@
-use crate::process_player_name;
+use crate::misc::process_player_name;
 
 pub struct Player {
     pub name: String,

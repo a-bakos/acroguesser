@@ -3,6 +3,7 @@ mod gameplay;
 mod gui;
 mod journal;
 mod journals;
+mod misc;
 mod player;
 mod points;
 
@@ -10,31 +11,18 @@ use crate::gameplay::Gameplay;
 use crate::gui::GUI;
 use crate::journal::Journal;
 use crate::journals::Journals;
+use crate::misc::get_player_name;
 use crate::player::Player;
 
 use std::io;
 
-fn process_player_name(player_name: String) -> String {
-    let mut player_name = player_name.trim().to_string();
-    if player_name.is_empty() {
-        player_name = String::from(consts::DEFAULT_PLAYER_NAME);
-    }
-    println!("player_name fn block");
-    println!("{:?}", player_name);
-    player_name
-}
-
 fn main() {
     // player setup
-    let mut player_name: String = String::new();
-    GUI::render(GUI::WaitingPlayerName);
-    io::stdin()
-        .read_line(&mut player_name)
-        .expect(consts::ERROR_READING_PLAYER_NAME);
+    let player_name: String = get_player_name();
     let player: Player = Player::new(player_name);
 
     // game loop setup
-    let mut game = Gameplay::new("hola".to_string());
+    let mut game = Gameplay::new(player);
     println!("{:?}", game);
     let journals = Journals::new();
     GUI::render(GUI::Start(&game.player_name));
@@ -93,8 +81,4 @@ fn main() {
     }
 
     GUI::render(GUI::End);
-}
-
-fn exit_listener(user_command: String) -> bool {
-    user_command == consts::CMD_QUIT_E || user_command == consts::CMD_QUIT_EXIT
 }
