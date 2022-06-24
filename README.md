@@ -13,10 +13,10 @@ Init:
 
 Gameplay:
 
-- Ask for player's name
+- [done] Ask for player's name
 - Select random title + corresponding acronym
 	- Validate the acronym (trim, check length (4 char max), see if it starts with 0)
-- Show title to user
+- [done] Show title to user
 - Init std input loop to take guesses
 - If guess matches, add points to player's profile
 

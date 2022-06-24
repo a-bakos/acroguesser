@@ -17,6 +17,7 @@ impl Journals {
                     title: String::from("The title 2"),
                     acronym: "EFGH".to_lowercase(),
                 },
+                Journal::new(),
             ],
         }
     }
@@ -25,10 +26,10 @@ impl Journals {
     //pub fn store_journal_list() {}
 
     pub fn get_random_journal(&self) -> &Journal {
-        let mut selection: &Journal;
+        let selection: &Journal;
         let len = self.all.len();
         let mut rng = thread_rng();
-        let index: u32 = rng.gen_range(0..=len as u32);
+        let index: u32 = rng.gen_range(0..len as u32);
 
         // is journal in history
 

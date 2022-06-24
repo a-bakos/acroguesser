@@ -3,14 +3,26 @@ mod gameplay;
 mod gui;
 mod journal;
 mod journals;
+mod player;
 mod points;
 
 use crate::gameplay::Gameplay;
 use crate::gui::GUI;
 use crate::journal::Journal;
 use crate::journals::Journals;
+use crate::player::Player;
 
 use std::io;
+
+fn process_player_name(player_name: String) -> String {
+    let mut player_name = player_name.trim().to_string();
+    if player_name.is_empty() {
+        player_name = String::from(consts::DEFAULT_PLAYER_NAME);
+    }
+    println!("player_name fn block");
+    println!("{:?}", player_name);
+    player_name
+}
 
 fn main() {
     // player setup
@@ -19,14 +31,10 @@ fn main() {
     io::stdin()
         .read_line(&mut player_name)
         .expect(consts::ERROR_READING_PLAYER_NAME);
-
-    player_name = player_name.trim().to_string();
-    if player_name.is_empty() {
-        player_name = String::from(consts::DEFAULT_PLAYER_NAME);
-    }
+    let player: Player = Player::new(player_name);
 
     // game loop setup
-    let mut game = Gameplay::new(player_name);
+    let mut game = Gameplay::new("hola".to_string());
     println!("{:?}", game);
     let journals = Journals::new();
     GUI::render(GUI::Start(&game.player_name));
