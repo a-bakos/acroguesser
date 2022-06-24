@@ -32,4 +32,14 @@ Gameplay:
 - Clear terminal on each game loop and show game details
 
 - Game menu
-- User profile: name, points, game history,
+	- new
+		- max points / txt / json
+	- load
+		- txt / json
+	- save
+		- txt / json
+	- user
+		- name
+		- points
+		- history
+	- reset history
