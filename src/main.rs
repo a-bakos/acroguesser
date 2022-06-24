@@ -23,7 +23,7 @@ fn main() {
 
     // game loop setup
     let mut game = Gameplay::new(player);
-    println!("{:?}", game);
+    // init journals list
     let journals = Journals::new();
     GUI::render(GUI::Start(&game.player_name));
 
@@ -61,13 +61,14 @@ fn main() {
                 if journal.is_matching_guess(&user_guess) {
                     game.add_points(rounds_counter);
                     GUI::render(GUI::Win);
+                    // todo move journal to used journals
                     break;
                 } else {
                     GUI::render(GUI::TryAgain);
                 }
 
                 game.increase_tries();
-                game.store_in_guess_history(user_guess);
+                game.add_to_guess_history(user_guess);
                 rounds_counter += 1;
             } else {
                 GUI::render(GUI::EmptyInput);

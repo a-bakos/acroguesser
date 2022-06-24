@@ -1,8 +1,10 @@
 use crate::Journal;
 use rand::{thread_rng, Rng};
 
+#[derive(Debug)]
 pub struct Journals {
     pub all: Vec<Journal>,
+    pub used: Vec<Journal>,
 }
 
 impl Journals {
@@ -19,11 +21,15 @@ impl Journals {
                 },
                 Journal::new(),
             ],
+            used: vec![],
         }
     }
 
     //pub fn get_journal_list() {}
-    //pub fn store_journal_list() {}
+    //pub fn store_journal_list(&mut self) {}
+
+    // move journal to used so it's not selected again to guess
+    pub fn drop_journal(&mut self, journal: Journal) {}
 
     pub fn get_random_journal(&self) -> &Journal {
         let selection: &Journal;

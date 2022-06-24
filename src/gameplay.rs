@@ -13,7 +13,7 @@ impl Gameplay {
     pub fn new(player: Player) -> Self {
         Self {
             player_name: player.name,
-            history: vec!["abcd".to_string()],
+            history: vec![],
             points: 0,
             tries: 0,
         }
@@ -40,7 +40,7 @@ impl Gameplay {
         self.tries += 1;
     }
 
-    pub fn store_in_guess_history(&mut self, acronym: String) {
+    pub fn add_to_guess_history(&mut self, acronym: String) {
         self.history.push(acronym.to_lowercase());
     }
 
