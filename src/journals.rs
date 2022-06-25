@@ -1,4 +1,6 @@
 use crate::consts;
+use crate::gameplay::Gameplay;
+use crate::misc;
 use crate::Journal;
 use rand::{thread_rng, Rng};
 
@@ -20,7 +22,6 @@ impl Journals {
                     title: String::from("The title 2"),
                     acronym: "EFGH".to_lowercase(),
                 },
-                Journal::new(),
             ],
             used: vec![],
         }
@@ -32,25 +33,23 @@ impl Journals {
     // move journal to used so it's not selected again to guess
     pub fn drop_journal(&mut self, journal: Journal) {}
 
-    pub fn get_random_journal(&self) -> &Journal {
+    pub fn get_random_journal(&self, game: &Gameplay) -> &Journal {
         let selection: &Journal;
         let len = self.all.len();
         let mut rng = thread_rng();
         let index: u32 = rng.gen_range(0..len as u32);
 
-        // is journal in history
-
         // machine chosen history
-
-        // Process random selection
-        // - make sure its acro is 4 char len
-        // - must have a title
-        // - shouldn't start wit number
 
         selection = &self.all[index as usize];
 
-        if selection.title.is_empty() || selection.acronym.is_empty() {
-            println!("select another one");
+        // check if journal is in history, get another one if so
+        if selection.is_journal_in_history(&game.history) {
+            println!("TODO select another one");
+        }
+
+        if !misc::check_journal(selection) {
+            println!("TODO select another one!");
         }
 
         selection

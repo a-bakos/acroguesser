@@ -16,20 +16,13 @@ use crate::player::Player;
 use std::io;
 
 fn main() {
-    let test: Journal = Journal {
-        title: "Hello".to_string(),
-        acronym: "0BCD".to_string(),
-    };
-    println!("{}", misc::check_journal(&test));
-
     // player setup
     let player_name: String = misc::get_player_name();
     let player: Player = Player::new(player_name);
 
     // game loop setup
     let mut game = Gameplay::new(player);
-    // init journals list
-    let journals = Journals::new();
+    let journals = Journals::new(); // init journals list
     GUI::render(GUI::Start(&game.player_name));
 
     // gameloop start
@@ -38,12 +31,7 @@ fn main() {
         let mut rounds_counter: u8 = 0;
 
         // get a journal to guess
-        // journal setup
-        let mut journal: &Journal = Journals::get_random_journal(&journals);
-        // check if journal is in history, get another one if so
-        if journal.is_journal_in_history(&game.history) {
-            journal = Journals::get_random_journal(&journals);
-        }
+        let journal: &Journal = Journals::get_random_journal(&journals, &game);
 
         loop {
             GUI::render(GUI::JournalTitle(&journal.title));

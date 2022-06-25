@@ -43,6 +43,10 @@ pub fn check_journal(journal: &Journal) -> bool {
 fn check_journal_acronym(journal: &Journal) -> bool {
     let acronym: &str = journal.acronym.trim();
 
+    if acronym.is_empty() {
+        return false;
+    }
+
     // Acronym length check
     let acr_length: usize = acronym.chars().count();
     if acr_length != consts::VALID_ACRONYM_LEN {
