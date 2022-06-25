@@ -12,3 +12,6 @@ pub const ERROR_READING_USER_GUESS: &str = "Failed to read user's guess!";
 
 pub const CMD_QUIT_E: &str = "/e";
 pub const CMD_QUIT_EXIT: &str = "/exit";
+
+pub const CMD_USER_H: &str = "/h";
+pub const CMD_USER_HELP: &str = "/help";

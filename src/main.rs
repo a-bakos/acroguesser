@@ -17,8 +17,8 @@ use std::io;
 
 fn main() {
     let test: Journal = Journal {
-        title: "He".to_string(),
-        acronym: "ABCD".to_string(),
+        title: "Hello".to_string(),
+        acronym: "0BCD".to_string(),
     };
     println!("{}", misc::check_journal(&test));
 

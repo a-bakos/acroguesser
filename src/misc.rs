@@ -37,18 +37,29 @@ pub fn check_journal(journal: &Journal) -> bool {
     true
 }
 
+/**
+ * Journal acronym checker method
+ */
 fn check_journal_acronym(journal: &Journal) -> bool {
+    let acronym: &str = journal.acronym.trim();
+
     // Acronym length check
-    let acr_length = journal.acronym.trim().chars().count();
+    let acr_length: usize = acronym.chars().count();
     if acr_length != consts::VALID_ACRONYM_LEN {
         return false;
     }
 
-    // todo - check if acro starts with 0
+    // Acronym starts with check
+    if acronym.starts_with("0") {
+        return false;
+    }
 
     true
 }
 
+/**
+ * Journal title checker method
+ */
 fn check_journal_title(journal: &Journal) -> bool {
     if journal.title.is_empty() || consts::MIN_TITLE_LEN >= journal.title.trim().chars().count() {
         return false;
