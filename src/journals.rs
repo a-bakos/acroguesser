@@ -1,3 +1,4 @@
+use crate::consts;
 use crate::Journal;
 use rand::{thread_rng, Rng};
 

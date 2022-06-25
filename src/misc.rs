@@ -1,4 +1,5 @@
 use crate::consts;
+use crate::Journal;
 use crate::GUI;
 use std::io;
 
@@ -22,4 +23,19 @@ pub fn process_player_name(player_name: String) -> String {
 // WIP
 fn exit_listener(user_command: String) -> bool {
     user_command == consts::CMD_QUIT_E || user_command == consts::CMD_QUIT_EXIT
+}
+
+pub fn check_journal(journal: &Journal) -> bool {
+    // Acronym length check
+    let acr_length = journal.acronym.chars().count();
+    if acr_length != consts::VALID_ACRONYM_LEN {
+        return false;
+    }
+
+    // Title check
+    if journal.title.is_empty() || consts::MIN_TITLE_LEN >= journal.title.chars().count() {
+        return false;
+    }
+
+    true
 }

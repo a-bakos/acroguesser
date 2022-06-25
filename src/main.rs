@@ -11,14 +11,19 @@ use crate::gameplay::Gameplay;
 use crate::gui::GUI;
 use crate::journal::Journal;
 use crate::journals::Journals;
-use crate::misc::get_player_name;
 use crate::player::Player;
 
 use std::io;
 
 fn main() {
+    let test: Journal = Journal {
+        title: "He".to_string(),
+        acronym: "ABCD".to_string(),
+    };
+    println!("{}", misc::check_journal(&test));
+
     // player setup
-    let player_name: String = get_player_name();
+    let player_name: String = misc::get_player_name();
     let player: Player = Player::new(player_name);
 
     // game loop setup

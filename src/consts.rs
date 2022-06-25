@@ -2,7 +2,8 @@ pub const JOURNALS_API_ENDPOINT: &str = "";
 
 pub const MAX_TRIES: u8 = 5;
 
-pub const ACRONYM_LEN: usize = 4;
+pub const VALID_ACRONYM_LEN: usize = 4;
+pub const MIN_TITLE_LEN: usize = 3;
 
 pub const DEFAULT_PLAYER_NAME: &str = "Player";
 
