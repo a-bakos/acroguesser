@@ -8,6 +8,7 @@ use rand::{thread_rng, Rng};
 pub struct Journals {
     pub all: Vec<Journal>,
     pub used: Vec<Journal>,
+    invalid: Vec<Journal>,
 }
 
 impl Journals {
@@ -24,6 +25,7 @@ impl Journals {
                 },
             ],
             used: vec![],
+            invalid: vec![],
         }
     }
 
@@ -46,10 +48,12 @@ impl Journals {
         // check if journal is in history, get another one if so
         if selection.is_journal_in_history(&game.history) {
             println!("TODO select another one");
+            // move journal out of list
         }
 
         if !misc::check_journal(selection) {
             println!("TODO select another one!");
+            // move journal to invalid items
         }
 
         selection
