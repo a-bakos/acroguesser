@@ -26,13 +26,21 @@ fn exit_listener(user_command: String) -> bool {
 }
 
 pub fn check_journal(journal: &Journal) -> bool {
-    // Acronym length check
     if !check_journal_acronym(&journal) {
         return false;
     }
 
-    // Title check
     if !check_journal_title(&journal) {
+        return false;
+    }
+
+    true
+}
+
+fn check_journal_acronym(journal: &Journal) -> bool {
+    // Acronym length check
+    let acr_length = journal.acronym.trim().chars().count();
+    if acr_length != consts::VALID_ACRONYM_LEN {
         return false;
     }
 
@@ -41,16 +49,8 @@ pub fn check_journal(journal: &Journal) -> bool {
     true
 }
 
-fn check_journal_acronym(journal: &Journal) -> bool {
-    let acr_length = journal.acronym.chars().count();
-    if acr_length != consts::VALID_ACRONYM_LEN {
-        return false;
-    }
-    true
-}
-
 fn check_journal_title(journal: &Journal) -> bool {
-    if journal.title.is_empty() || consts::MIN_TITLE_LEN >= journal.title.chars().count() {
+    if journal.title.is_empty() || consts::MIN_TITLE_LEN >= journal.title.trim().chars().count() {
         return false;
     }
     true
