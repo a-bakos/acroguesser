@@ -1,6 +1,6 @@
 use crate::consts;
 use crate::Gameplay;
-use crate::Player;
+
 use std::fs;
 
 pub fn write_player_data(game: &Gameplay) {

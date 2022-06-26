@@ -9,11 +9,6 @@ pub fn process_player_name(player_name: String) -> String {
     player_name
 }
 
-// WIP
-fn exit_listener(user_command: String) -> bool {
-    user_command == consts::CMD_QUIT_E || user_command == consts::CMD_QUIT_EXIT
-}
-
 pub fn check_journal(journal: &Journal) -> bool {
     if !check_journal_acronym(&journal) {
         return false;
