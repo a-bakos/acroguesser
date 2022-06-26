@@ -7,6 +7,7 @@ mod journals;
 mod misc;
 mod player;
 mod points;
+mod local_io;
 
 use crate::gameplay::Gameplay;
 use crate::gui::GUI;
@@ -18,7 +19,7 @@ use std::io;
 
 fn main() {
     // player setup
-    let player_name: String = misc::get_player_name();
+    let player_name: String = local_io::get_player_name();
     let player: Player = Player::new(player_name);
 
     // game loop setup
