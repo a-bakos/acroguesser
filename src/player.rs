@@ -1,5 +1,6 @@
 use crate::misc::process_player_name;
 
+#[derive(Debug)]
 pub struct Player {
     pub name: String,
 }

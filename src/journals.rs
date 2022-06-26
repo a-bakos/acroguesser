@@ -38,8 +38,7 @@ impl Journals {
     pub fn get_random_journal(&self, game: &Gameplay) -> &Journal {
         let selection: &Journal;
         let len = self.all.len();
-        let mut rng = thread_rng();
-        let index: u32 = rng.gen_range(0..len as u32);
+        let index: u32 = thread_rng().gen_range(0..len as u32);
 
         // machine chosen history
 
@@ -47,13 +46,15 @@ impl Journals {
 
         // check if journal is in history, get another one if so
         if selection.is_journal_in_history(&game.history) {
-            println!("TODO select another one");
             // move journal out of list
+            // then select another one
+            println!("TODO select another one");
         }
 
         if !misc::check_journal(selection) {
-            println!("TODO select another one!");
             // move journal to invalid items
+            // then select another one
+            println!("TODO select another one!");
         }
 
         selection

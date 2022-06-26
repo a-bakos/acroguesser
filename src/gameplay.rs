@@ -3,19 +3,19 @@ use crate::Player;
 
 #[derive(Debug)]
 pub struct Gameplay {
-    pub player_name: String,
     pub points: u8,
     pub history: Vec<String>,
     pub tries: u8,
+    pub player: Player,
 }
 
 impl Gameplay {
     pub fn new(player: Player) -> Self {
         Self {
-            player_name: player.name,
             history: vec![],
             points: 0,
             tries: 0,
+            player,
         }
     }
 

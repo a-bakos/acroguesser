@@ -1,4 +1,5 @@
 mod consts;
+mod file;
 mod gameplay;
 mod gui;
 mod journal;
@@ -23,7 +24,9 @@ fn main() {
     // game loop setup
     let mut game = Gameplay::new(player);
     let journals = Journals::new(); // init journals list
-    GUI::render(GUI::Start(&game.player_name));
+    GUI::render(GUI::Start(&game.player.name));
+
+    file::write_player_data(&game);
 
     // gameloop start
     // outer loop for main rounds
