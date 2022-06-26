@@ -42,7 +42,7 @@ fn check_journal_acronym(journal: &Journal) -> bool {
     }
 
     // Acronym starts with check
-    if acronym.starts_with("0") {
+    if acronym.starts_with(consts::ACRONYM_INVALID_START) {
         return false;
     }
 
