@@ -10,8 +10,7 @@ pub fn process_player_name(player_name: String) -> String {
 }
 
 pub fn increase_rounds_counter(rounds_counter: &mut u8) -> u8 {
-    let rounds_counter = *rounds_counter + 1;
-    rounds_counter
+    *rounds_counter + 1
 }
 
 pub fn check_journal(journal: &Journal) -> bool {
