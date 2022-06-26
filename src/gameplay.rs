@@ -44,5 +44,4 @@ impl Gameplay {
         self.history.push(acronym.to_lowercase());
     }
 
-    // store_player_name
 }

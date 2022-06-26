@@ -22,6 +22,8 @@ pub const CMD_QUIT_EXIT: &str = "/exit";
 pub const CMD_USER_H: &str = "/h";
 pub const CMD_USER_HELP: &str = "/help";
 
+pub const CMD_USER_NAME: &str = "/name";
+
 // File and IO
 
 pub const FILE_PLAYER_DATA: &str = "player_data.txt";

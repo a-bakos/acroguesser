@@ -49,6 +49,20 @@ fn check_journal_acronym(journal: &Journal) -> bool {
     true
 }
 
+pub fn populate_journals_list() -> Vec<Journal> {
+    let container = vec![
+        Journal {
+            title: String::from("The title 1"),
+            acronym: "ABCD".to_lowercase(),
+        },
+        Journal {
+            title: String::from("The title 2"),
+            acronym: "EFGH".to_lowercase(),
+        },
+    ];
+    container
+}
+
 /**
  * Journal title checker method
  */

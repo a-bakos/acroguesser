@@ -13,16 +13,7 @@ pub struct Journals {
 impl Journals {
     pub fn new() -> Self {
         Self {
-            all: vec![
-                Journal {
-                    title: String::from("The title 1"),
-                    acronym: "ABCD".to_lowercase(),
-                },
-                Journal {
-                    title: String::from("The title 2"),
-                    acronym: "EFGH".to_lowercase(),
-                },
-            ],
+            all: misc::populate_journals_list(),
             used: vec![],
             invalid: vec![],
         }
