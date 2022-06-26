@@ -9,6 +9,11 @@ pub fn process_player_name(player_name: String) -> String {
     player_name
 }
 
+pub fn increase_rounds_counter(rounds_counter: &mut u8) -> u8 {
+    let rounds_counter = *rounds_counter + 1;
+    rounds_counter
+}
+
 pub fn check_journal(journal: &Journal) -> bool {
     if !check_journal_acronym(&journal) {
         return false;

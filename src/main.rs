@@ -66,7 +66,7 @@ fn main() {
 
                 game.increase_tries();
                 game.add_to_guess_history(user_guess);
-                rounds_counter += 1;
+                misc::increase_rounds_counter(&mut rounds_counter);
             } else {
                 GUI::render(GUI::EmptyInput);
             }
