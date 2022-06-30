@@ -16,7 +16,11 @@ pub struct Gameplay {
 }
 
 // Implement default Log trait for Game
-impl Log for Gameplay {}
+impl Log for Gameplay {
+    fn print_info(&self) {
+        println!("Points: {}", self.points);        
+    }
+}
 
 impl Gameplay {
     pub fn new(player: Player) -> Self {

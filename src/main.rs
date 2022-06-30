@@ -9,6 +9,8 @@ mod player;
 mod points;
 mod local_io;
 
+use gameplay::Log;
+
 use crate::gameplay::Gameplay;
 use crate::gui::GUI;
 use crate::journal::Journal;
@@ -24,6 +26,7 @@ fn main() {
 
     // game loop setup
     let mut game = Gameplay::new(player);
+    game.print_info();
     let journals = Journals::new(); // init journals list
     GUI::render(GUI::Start(&game.player.name));
 
