@@ -1,6 +1,12 @@
 use crate::points::Points;
 use crate::Player;
 
+pub trait Log {
+    fn print_info(&self) {
+        println!("Hello from trait");
+    }
+}
+
 #[derive(Debug)]
 pub struct Gameplay {
     pub points: u8,
@@ -8,6 +14,9 @@ pub struct Gameplay {
     pub tries: u8,
     pub player: Player,
 }
+
+// Implement default Log trait for Game
+impl Log for Gameplay {}
 
 impl Gameplay {
     pub fn new(player: Player) -> Self {
