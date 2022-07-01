@@ -8,8 +8,7 @@ mod misc;
 mod player;
 mod points;
 mod local_io;
-
-use gameplay::Log;
+mod traits;
 
 use crate::gameplay::Gameplay;
 use crate::gui::GUI;
@@ -19,6 +18,8 @@ use crate::player::Player;
 
 use std::io;
 
+use crate::traits::Log;
+
 fn main() {
     // player setup
     let player_name: String = local_io::get_player_name();
@@ -26,7 +27,7 @@ fn main() {
 
     // game loop setup
     let mut game = Gameplay::new(player);
-    game.print_info();
+    game.print_info(); // trait test
     let journals = Journals::new(); // init journals list
     GUI::render(GUI::Start(&game.player.name));
 
@@ -34,18 +35,18 @@ fn main() {
 
     // gameloop start
     // outer loop for main rounds
-    loop {
+    'outer: loop {
         let mut rounds_counter: u8 = 0;
 
         // get a journal to guess
         let journal: &Journal = Journals::get_random_journal(&journals, &game);
 
-        loop {
+        'inner: loop {
             GUI::render(GUI::JournalTitle(&journal.title));
 
             if rounds_counter == consts::MAX_TRIES {
                 GUI::render(GUI::MaxTriesReached);
-                break;
+                break 'inner;
             }
 
             // deal with guess input
@@ -62,7 +63,7 @@ fn main() {
                     game.add_points(rounds_counter);
                     GUI::render(GUI::Win);
                     // todo move journal to used journals
-                    break;
+                    break 'inner;
                 } else {
                     GUI::render(GUI::TryAgain);
                 }
@@ -78,7 +79,7 @@ fn main() {
         println!("{:?}", game);
 
         // temp break
-        break;
+        break 'outer;
     }
 
     GUI::render(GUI::End);
