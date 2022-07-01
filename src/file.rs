@@ -11,3 +11,7 @@ pub fn write_player_data(game: &Gameplay) {
 
     fs::write(consts::FILE_PLAYER_DATA, to_write);
 }
+
+pub fn write_to_log(log_msg: &str) {
+    fs::write(consts::FILE_STATUS_DUMP, String::from(log_msg));
+}

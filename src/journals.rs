@@ -1,5 +1,7 @@
 use crate::gameplay::Gameplay;
 use crate::misc;
+use crate::traits;
+use crate::traits::Log;
 use crate::Journal;
 use rand::{thread_rng, Rng};
 
@@ -9,6 +11,8 @@ pub struct Journals {
     pub used: Vec<Journal>,
     invalid: Vec<Journal>,
 }
+
+impl traits::Log for Journals {}
 
 impl Journals {
     pub fn new() -> Self {
@@ -47,6 +51,7 @@ impl Journals {
             println!("TODO select another one!");
         }
 
+        self.status("Selection: {selection}");
         selection
     }
 }

@@ -1,5 +1,20 @@
+use crate::consts;
+use std::fs;
+use std::io::Write;
+
 pub trait Log {
-    fn print_info(&self) {
-        println!("Hello from trait");
+    fn status(&self, msg: &str) {
+        if true == consts::DEBUG_VERBOSE {
+            let mut log_msg: String = String::new();
+            log_msg.push_str(msg);
+
+            let mut file = fs::OpenOptions::new()
+                .write(true)
+                .append(true)
+                .open(consts::FILE_STATUS_DUMP)
+                .unwrap();
+
+            write!(file, "{}\n", log_msg);
+        }
     }
 }

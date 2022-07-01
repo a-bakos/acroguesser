@@ -1,5 +1,7 @@
 // Mins, Maxs, Defaults, and Lengths
 
+pub const DEBUG_VERBOSE: bool = true;
+
 pub const MAX_TRIES: u8 = 5;
 
 pub const VALID_ACRONYM_LEN: usize = 4;
@@ -27,6 +29,7 @@ pub const CMD_USER_NAME: &str = "/name";
 // File and IO
 
 pub const FILE_PLAYER_DATA: &str = "player_data.txt";
+pub const FILE_STATUS_DUMP: &str = "status_log.txt";
 
 // API
 

@@ -4,10 +4,10 @@ mod gameplay;
 mod gui;
 mod journal;
 mod journals;
+mod local_io;
 mod misc;
 mod player;
 mod points;
-mod local_io;
 mod traits;
 
 use crate::gameplay::Gameplay;
@@ -27,7 +27,7 @@ fn main() {
 
     // game loop setup
     let mut game = Gameplay::new(player);
-    game.print_info(); // trait test
+    game.status("Game init");
     let journals = Journals::new(); // init journals list
     GUI::render(GUI::Start(&game.player.name));
 

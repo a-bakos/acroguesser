@@ -1,9 +1,12 @@
 use crate::misc::process_player_name;
+use crate::traits;
 
 #[derive(Debug)]
 pub struct Player {
     pub name: String,
 }
+
+impl traits::Log for Player {}
 
 impl Player {
     pub fn new(player_name: String) -> Self {

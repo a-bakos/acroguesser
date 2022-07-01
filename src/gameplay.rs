@@ -1,6 +1,7 @@
 use crate::points::Points;
-use crate::Player;
 use crate::traits;
+use crate::traits::Log;
+use crate::Player;
 
 #[derive(Debug)]
 pub struct Gameplay {
@@ -11,11 +12,7 @@ pub struct Gameplay {
 }
 
 // Implement default Log trait for Game
-impl traits::Log for Gameplay {
-    fn print_info(&self) {
-        println!("Points: {}", self.points);        
-    }
-}
+impl traits::Log for Gameplay {}
 
 impl Gameplay {
     pub fn new(player: Player) -> Self {
@@ -45,11 +42,12 @@ impl Gameplay {
     }
 
     pub fn increase_tries(&mut self) {
+        self.status("Tries ++");
         self.tries += 1;
     }
 
     pub fn add_to_guess_history(&mut self, acronym: String) {
+        self.status("Added to guess history");
         self.history.push(acronym.to_lowercase());
     }
-
 }
