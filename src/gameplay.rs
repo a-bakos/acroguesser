@@ -47,7 +47,8 @@ impl Gameplay {
     }
 
     pub fn add_to_guess_history(&mut self, acronym: String) {
-        self.status("Added to guess history");
+        let status_msg = format!("Added to guess history: {}", &acronym);
+        self.status(status_msg.as_str());
         self.history.push(acronym.to_lowercase());
     }
 }

@@ -57,7 +57,9 @@ fn main() {
                 .expect(consts::ERROR_READING_USER_GUESS);
             let user_guess: String = user_guess.trim().to_string();
 
-            if !user_guess.is_empty() {
+            if user_guess.is_empty() {
+                GUI::render(GUI::EmptyInput);
+            } else {
                 GUI::render(GUI::YourGuess(&user_guess));
 
                 if journal.is_matching_guess(&user_guess) {
@@ -72,8 +74,6 @@ fn main() {
                 game.increase_tries();
                 game.add_to_guess_history(user_guess);
                 rounds_counter = misc::increase_rounds_counter(&mut rounds_counter);
-            } else {
-                GUI::render(GUI::EmptyInput);
             }
         }
 
