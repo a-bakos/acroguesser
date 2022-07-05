@@ -28,7 +28,7 @@ fn main() {
     // game loop setup
     let mut game = Gameplay::new(player);
     game.status("Game init");
-    let journals = Journals::new(); // init journals list
+    let mut journals = Journals::new(); // init journals list
     GUI::render(GUI::Start(&game.player.name));
 
     file::write_player_data(&game);
@@ -37,9 +37,8 @@ fn main() {
     // outer loop for main rounds
     'mainGameloop: loop {
         let mut rounds_counter: u8 = 0;
-
         // get a journal to guess
-        let journal: &Journal = Journals::get_random_journal(&journals, &game);
+        let journal: Journal = Journals::get_random_journal(&mut journals, &game);
 
         'guessRound: loop {
             GUI::render(GUI::JournalTitle(&journal.title));
@@ -65,7 +64,7 @@ fn main() {
                 if journal.is_matching_guess(&user_guess) {
                     game.add_points(rounds_counter);
                     GUI::render(GUI::Win);
-                    // todo move journal to used journals
+                    journals.drop_journal(journal);
                     break 'guessRound;
                 } else {
                     GUI::render(GUI::TryAgain);
