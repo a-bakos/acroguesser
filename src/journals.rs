@@ -51,7 +51,9 @@ impl Journals {
             println!("TODO select another one!");
         }
 
-        self.status("Selection: {selection}");
+        let status_msg = format!("Selection: {}", &selection.acronym);
+        self.status(status_msg.as_str());
+
         selection
     }
 }
