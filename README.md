@@ -14,11 +14,13 @@ Init:
 Gameplay:
 
 - [done] Ask for player's name
-- Select random title + corresponding acronym
+- [done] Select random title + corresponding acronym
 	- Validate the acronym ([done]trim, [done]check length (4 char max), [done]see if it starts with 0)
 - [done] Show title to user
-- Init std input loop to take guesses
+- [done] Init std input loop to take guesses
 - If guess matches, add points to player's profile
+
+- create status_log.txt if it doesn't exist
 
 ### Post-MVP ideas
 
