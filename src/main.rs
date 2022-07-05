@@ -35,22 +35,23 @@ fn main() {
 
     // gameloop start
     // outer loop for main rounds
-    'outer: loop {
+    'mainGameloop: loop {
         let mut rounds_counter: u8 = 0;
 
         // get a journal to guess
         let journal: &Journal = Journals::get_random_journal(&journals, &game);
 
-        'inner: loop {
+        'guessRound: loop {
             GUI::render(GUI::JournalTitle(&journal.title));
 
             if rounds_counter == consts::MAX_TRIES {
                 GUI::render(GUI::MaxTriesReached);
-                break 'inner;
+                break 'guessRound;
             }
 
             // deal with guess input
             let mut user_guess: String = String::new();
+            GUI::render(GUI::WaitingGuess);
             io::stdin()
                 .read_line(&mut user_guess)
                 .expect(consts::ERROR_READING_USER_GUESS);
@@ -63,7 +64,7 @@ fn main() {
                     game.add_points(rounds_counter);
                     GUI::render(GUI::Win);
                     // todo move journal to used journals
-                    break 'inner;
+                    break 'guessRound;
                 } else {
                     GUI::render(GUI::TryAgain);
                 }
@@ -79,7 +80,7 @@ fn main() {
         println!("{:?}", game);
 
         // temp break
-        break 'outer;
+        break 'mainGameloop;
     }
 
     GUI::render(GUI::End);
