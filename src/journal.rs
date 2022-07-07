@@ -42,7 +42,7 @@ mod tests {
             title: String::from("Hello title"),
             acronym: String::from("ABCD"),
         };
-        assert_eq!(true, journal.is_letter_in_acronym("A"));
+        assert!(journal.is_letter_in_acronym("A"));
     }
 
     #[test]
@@ -52,6 +52,16 @@ mod tests {
             acronym: String::from("ABCD"),
         };
         let user_guess: &str = "ABCD";
-        assert_eq!(true, journal.is_matching_guess(user_guess));
+        assert!(journal.is_matching_guess(user_guess));
+    }
+
+    #[test]
+    fn test_is_journal_in_history() {
+        let journal: Journal = Journal {
+            title: String::from("Hello title"),
+            acronym: String::from("ABCD"),
+        };
+        let game_history: &[String] = &[String::from("ABCD")];
+        assert!(journal.is_journal_in_history(game_history));
     }
 }
