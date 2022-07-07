@@ -31,3 +31,27 @@ impl Journal {
         game_history.contains(&self.acronym)
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::Journal;
+
+    #[test]
+    fn test_is_letter_in_acronym() {
+        let journal: Journal = Journal {
+            title: String::from("Hello title"),
+            acronym: String::from("ABCD"),
+        };
+        assert_eq!(true, journal.is_letter_in_acronym("A"));
+    }
+
+    #[test]
+    fn test_is_matching_guess() {
+        let journal: Journal = Journal {
+            title: String::from("Hello title"),
+            acronym: String::from("ABCD"),
+        };
+        let user_guess: &str = "ABCD";
+        assert_eq!(true, journal.is_matching_guess(user_guess));
+    }
+}
