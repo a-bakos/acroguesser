@@ -1,37 +1,33 @@
-# ACROGUESSER game - practice project
+# ACROGUESSER cli game - practice project
 
 Simple command line game. The player is presented with a randomly chosen journal
 title and they need to guess the journal's acronym to earn points.
 
+Player has 5 tries per journal maximum and every try/guess decreases the earnable
+points in that round.
+
 ### MVP Plan
 
-Init:
+**Init:**
 
 - Use an API endpoint to request a list of journals in json format
 	- Data needed to start: journal acronym and title
 - Store journals list locally ?
-
-Gameplay:
-
 - [done] Ask for player's name
 - [done] Select random title + corresponding acronym
-	- Validate the acronym ([done]trim, [done]check length (4 char max), [done]see if it starts with 0)
+	- [done] Validate the acronym ([done]trim, [done]check length (4 char max), [done]see if it starts with 0)
 - [done] Show title to user
 - [done] Init std input loop to take guesses
 - If guess matches, add points to player's profile
-
+- Clear console
+- Use colored console prints
 - create status_log.txt if it doesn't exist
-
-### Post-MVP ideas
-
 - Build in helper function(s):
-	- User can request a character (and earns less points)
+	- User can request a character (and earn less points in exchange)
 	- Maybe show a journal cover (need to extend the API call for this)
-	- Journal imprint
-- Limit guesses and/or decrease points per iteration
+	- Journal imprint?
+- [done] Limit guesses and/or decrease points per iteration
 - Store/update user game profile as text file
-- Colorised terminal text
-- Clear terminal on each game loop and show game details
 
 - Game menu
 	- new
