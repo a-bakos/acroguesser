@@ -32,6 +32,8 @@ impl Journal {
     }
 }
 
+// Unit tests
+
 #[cfg(test)]
 mod tests {
     use super::Journal;

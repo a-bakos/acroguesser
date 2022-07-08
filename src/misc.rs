@@ -72,3 +72,49 @@ fn check_journal_title(journal: &Journal) -> bool {
     }
     true
 }
+
+// Unit tests
+
+#[cfg(test)]
+mod tests {
+    use crate::journal::Journal;
+
+    use super::{
+        check_journal_acronym, check_journal_title, increase_rounds_counter, process_player_name,
+    };
+
+    #[test]
+    fn test_check_journal_title() {
+        let journal: &Journal = &Journal {
+            title: String::from("A title"),
+            acronym: String::from("ABCD"),
+        };
+        assert!(check_journal_title(journal));
+    }
+
+    #[test]
+    fn test_check_journal_acronym() {
+        let journal: &Journal = &Journal {
+            title: String::from("A title"),
+            acronym: String::from("ABCD"),
+        };
+        assert!(check_journal_acronym(journal));
+    }
+
+    #[test]
+    fn test_process_player_name() {
+        let player_name: String = String::from("");
+        assert_ne!(
+            String::from(""),
+            process_player_name(player_name),
+            "Player name should have non-empty default value!"
+        );
+    }
+
+    #[test]
+    fn test_increase_rounds_counter() {
+        let mut rounds_counter: u8 = 0;
+        let expected: u8 = 1;
+        assert_eq!(expected, increase_rounds_counter(&mut rounds_counter));
+    }
+}
