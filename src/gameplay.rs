@@ -52,3 +52,20 @@ impl Gameplay {
         self.history.push(acronym.to_lowercase());
     }
 }
+
+// Unit tests
+
+#[cfg(test)]
+mod tests {
+    use crate::player::Player;
+
+    use super::Gameplay;
+
+    #[test]
+    fn test_add_points() {
+        let player: Player = Player::new(String::from("Frank"));
+        let mut game: Gameplay = Gameplay::new(player);
+        game.add_points(1);
+        assert_eq!(5, game.points);
+    }
+}
