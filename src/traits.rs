@@ -1,4 +1,5 @@
 use crate::consts;
+use chrono::prelude::*;
 use std::fs;
 use std::io::Write;
 
@@ -14,7 +15,9 @@ pub trait Log {
                 .open(consts::FILE_STATUS_DUMP)
                 .unwrap();
 
-            write!(file, "{}\n", log_msg);
+            let time: DateTime<Utc> = Utc::now();
+
+            write!(file, "{} {}\n", time, log_msg);
         }
     }
 }
