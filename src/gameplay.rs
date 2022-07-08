@@ -16,12 +16,15 @@ impl traits::Log for Gameplay {}
 
 impl Gameplay {
     pub fn new(player: Player) -> Self {
-        Self {
+        let game = Self {
             history: vec![],
             points: 0,
             tries: 0,
             player,
-        }
+        };
+        game.status("New game started");
+
+        game
     }
 
     pub fn add_points(&mut self, rounds: u8) {

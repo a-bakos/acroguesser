@@ -27,7 +27,6 @@ fn main() {
 
     // game loop setup
     let mut game = Gameplay::new(player);
-    game.status("New game started");
     let mut journals = Journals::new(); // init journals list
     GUI::render(GUI::Start(&game.player.name));
 

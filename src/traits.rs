@@ -17,7 +17,7 @@ pub trait Log {
 
             let time: DateTime<Utc> = Utc::now();
 
-            write!(file, "{} {}\n", time, log_msg);
+            write!(file, "{} {}\n", time, log_msg).ok();
         }
     }
 }
