@@ -29,7 +29,7 @@ impl GUI<'_> {
             }
             GUI::EmptyInput => println!("Empty input. Type in your guess."),
             GUI::YourGuess(guess) => println!("Your guess was: {}", guess),
-            GUI::Confirm => println!("Y or YES to confirm: "),
+            GUI::Confirm => println!("-Y or -YES to confirm: "),
             GUI::Exiting => println!("Exiting"),
             GUI::MainMenu => {
                 println!("ACROGUESSER!\n");

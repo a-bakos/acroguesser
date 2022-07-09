@@ -1,8 +1,8 @@
-use crate::gameplay::Gameplay;
-use crate::misc;
-use crate::traits;
-use crate::traits::Log;
-use crate::Journal;
+use crate::core::gameplay::Gameplay;
+use crate::core::journal::Journal;
+use crate::core::misc;
+use crate::core::traits;
+use crate::core::traits::Log;
 use rand::{thread_rng, Rng};
 
 #[derive(Debug)]

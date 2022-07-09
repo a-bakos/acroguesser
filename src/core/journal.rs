@@ -1,5 +1,5 @@
 // use crate::consts;
-use crate::traits::{self, Log};
+use crate::core::traits::{self, Log};
 
 #[derive(Debug)]
 pub struct Journal {

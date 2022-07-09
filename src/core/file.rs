@@ -1,5 +1,5 @@
-use crate::consts;
-use crate::Gameplay;
+use crate::core::consts;
+use crate::core::gameplay::Gameplay;
 
 use std::fs;
 

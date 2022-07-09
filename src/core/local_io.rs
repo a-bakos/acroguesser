@@ -1,5 +1,5 @@
+use crate::core::{consts, gui::GUI};
 use std::io;
-use crate::{gui::GUI, consts};
 
 pub fn get_player_name() -> String {
     let mut player_name = String::new();

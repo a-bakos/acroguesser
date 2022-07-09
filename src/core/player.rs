@@ -1,5 +1,5 @@
-use crate::misc::process_player_name;
-use crate::traits::{self, Log};
+use crate::core::misc::process_player_name;
+use crate::core::traits::{self, Log};
 
 #[derive(Debug)]
 pub struct Player {

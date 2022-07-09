@@ -1,4 +1,5 @@
-use crate::{consts, misc, traits, GUI};
+use crate::core::gui::GUI;
+use crate::core::{consts, misc, traits};
 
 pub enum Menu {
     Main,

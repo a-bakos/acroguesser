@@ -1,21 +1,8 @@
-mod consts;
-mod file;
-mod gameplay;
-mod gui;
-mod journal;
-mod journals;
-mod local_io;
-mod menu;
-mod misc;
-mod player;
-mod points;
-mod traits;
+mod core;
 
-use crate::gameplay::Gameplay;
-use crate::gui::GUI;
-use crate::journal::Journal;
-use crate::menu::Menu;
-use crate::player::Player;
+use crate::core::gameplay::Gameplay;
+use crate::core::gui::GUI;
+use crate::core::menu::Menu;
 
 fn main() {
     GUI::main_menu();

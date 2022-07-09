@@ -1,7 +1,7 @@
 use std::io;
 
-use crate::consts;
-use crate::Journal;
+use crate::core::consts;
+use crate::core::journal::Journal;
 
 pub fn process_player_name(player_name: String) -> String {
     let mut player_name = player_name.trim().to_string();
@@ -89,7 +89,7 @@ pub fn get_user_input() -> String {
 
 #[cfg(test)]
 mod tests {
-    use crate::journal::Journal;
+    use crate::core::journal::Journal;
 
     use super::{
         check_journal_acronym, check_journal_title, increase_rounds_counter, process_player_name,

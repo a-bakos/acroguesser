@@ -1,13 +1,13 @@
 use std::io;
 
-use crate::gui::GUI;
-use crate::journal::Journal;
-use crate::journals::Journals;
-use crate::menu::Menu;
-use crate::points::Points;
-use crate::traits::Log;
-use crate::Player;
-use crate::{consts, local_io, misc, traits};
+use crate::core::gui::GUI;
+use crate::core::journal::Journal;
+use crate::core::journals::Journals;
+use crate::core::menu::Menu;
+use crate::core::player::Player;
+use crate::core::points::Points;
+use crate::core::traits::Log;
+use crate::core::{consts, local_io, misc, traits};
 
 #[derive(Debug)]
 pub struct Gameplay {
@@ -134,7 +134,7 @@ impl Gameplay {
 
 #[cfg(test)]
 mod tests {
-    use crate::player::Player;
+    use crate::core::player::Player;
 
     use super::Gameplay;
 
