@@ -9,9 +9,9 @@ pub fn write_player_data(game: &Gameplay) {
     to_write.push_str(&game.player.name);
     to_write.push_str("\n");
 
-    fs::write(consts::FILE_PLAYER_DATA, to_write);
+    fs::write(consts::FILE_PLAYER_DATA, to_write).ok();
 }
 
 pub fn write_to_log(log_msg: &str) {
-    fs::write(consts::FILE_STATUS_DUMP, String::from(log_msg));
+    fs::write(consts::FILE_STATUS_DUMP, String::from(log_msg)).ok();
 }

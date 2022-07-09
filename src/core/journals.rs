@@ -9,7 +9,7 @@ use rand::{thread_rng, Rng};
 pub struct Journals {
     pub all: Vec<Journal>,
     pub used: Vec<Journal>,
-    invalid: Vec<Journal>,
+    //invalid: Vec<Journal>,
 }
 
 impl traits::Log for Journals {}
@@ -19,7 +19,7 @@ impl Journals {
         Self {
             all: misc::populate_journals_list(),
             used: vec![],
-            invalid: vec![],
+            //invalid: vec![],
         }
     }
 

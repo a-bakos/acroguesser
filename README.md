@@ -28,9 +28,12 @@ points in that round.
 	- Journal imprint?
 - [done] Limit guesses and/or decrease points per iteration
 - Store/update user game profile as text file
+- Game stats in file:
+	- number of games played
+	- players
 
 - Game menu
-	- new
+	- [done] new
 		- max points / txt / json
 	- load, continue
 		- txt / json
@@ -41,3 +44,4 @@ points in that round.
 		- points
 		- history
 	- reset history
+	- [done] exit
