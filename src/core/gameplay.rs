@@ -128,6 +128,11 @@ impl Gameplay {
 
         GUI::main_menu();
     }
+
+    pub fn help() {
+        GUI::help_menu();
+        misc::pause();
+    }
 }
 
 // Unit tests

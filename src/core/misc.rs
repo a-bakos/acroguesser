@@ -1,7 +1,19 @@
 use std::io;
+use std::io::prelude::*;
 
 use crate::core::consts;
 use crate::core::journal::Journal;
+
+pub fn pause() {
+    let mut stdin = io::stdin();
+    let mut stdout = io::stdout();
+    // We want the cursor to stay at the end of the line,
+    // so we print without a newline and flush manually.
+    write!(stdout, "\nPress any key to continue...").unwrap();
+    stdout.flush().unwrap();
+    // Read a single byte and discard
+    stdin.read(&mut [0u8]).unwrap();
+}
 
 pub fn process_player_name(player_name: String) -> String {
     let mut player_name = player_name.trim().to_string();

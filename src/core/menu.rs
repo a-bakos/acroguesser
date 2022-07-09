@@ -5,6 +5,7 @@ pub enum Menu {
     Main,
     Start,
     Exit,
+    Help,
 }
 
 impl traits::Log for Menu {}
@@ -20,6 +21,7 @@ impl Menu {
                     Menu::Main
                 }
             }
+            consts::CMD_USER_H | consts::CMD_USER_HELP => Menu::Help,
             consts::CMD_GAME_N | consts::CMD_GAME_NEW => Menu::Start,
             _ => Menu::Main,
         }

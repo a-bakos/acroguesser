@@ -12,6 +12,7 @@ pub enum GUI<'a> {
     Confirm,
     Exiting,
     MainMenu,
+    HelpMenu,
 }
 
 impl GUI<'_> {
@@ -34,15 +35,23 @@ impl GUI<'_> {
             GUI::MainMenu => {
                 println!("ACROGUESSER!\n");
                 println!("\t-N: New game\n");
+                println!("\t-H: Instructions\n");
                 println!("\t-E: Exit\n");
 
                 // waiting for user choice
                 println!(">> ");
+            }
+            GUI::HelpMenu => {
+                println!("HOW TO PLAY");
             }
         }
     }
 
     pub fn main_menu() {
         GUI::render(GUI::MainMenu);
+    }
+
+    pub fn help_menu() {
+        GUI::render(GUI::HelpMenu);
     }
 }
