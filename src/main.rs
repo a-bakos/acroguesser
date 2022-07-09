@@ -21,14 +21,13 @@ fn main() {
     GUI::main_menu();
 
     'menu: loop {
-        let menu: Menu = Menu::menu_router();
-        match menu {
+        match Menu::menu_router() {
             Menu::Main => {
                 GUI::main_menu();
                 continue;
             }
             Menu::Start => Gameplay::new_game_init(),
             Menu::Exit => break 'menu,
-        }
+        };
     }
 }
