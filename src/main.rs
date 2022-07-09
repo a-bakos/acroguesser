@@ -5,6 +5,7 @@ mod gui;
 mod journal;
 mod journals;
 mod local_io;
+mod menu;
 mod misc;
 mod player;
 mod points;
@@ -14,6 +15,7 @@ use crate::gameplay::Gameplay;
 use crate::gui::GUI;
 use crate::journal::Journal;
 use crate::journals::Journals;
+use crate::menu::Menu;
 use crate::player::Player;
 
 use std::io;
@@ -21,6 +23,9 @@ use std::io;
 use crate::traits::Log;
 
 fn main() {
+
+    Menu::show_main_menu();
+
     // player setup
     let player_name: String = local_io::get_player_name();
     let player: Player = Player::new(player_name);
@@ -58,6 +63,10 @@ fn main() {
             if user_guess.is_empty() {
                 GUI::render(GUI::EmptyInput);
             } else {
+                if Menu::exit_listener(&user_guess) {
+                    break 'guessRound;
+                }
+
                 GUI::render(GUI::YourGuess(&user_guess));
 
                 if journal.is_matching_guess(&user_guess) {
