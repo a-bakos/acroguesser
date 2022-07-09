@@ -20,17 +20,17 @@ use crate::player::Player;
 
 use std::io;
 
-use crate::traits::Log;
-
 fn main() {
-    Menu::main_menu();
+    GUI::main_menu();
     let menu: Menu = Menu::menu_router();
     match menu {
-        Menu::Main => (),
-        Menu::Start => (),
+        Menu::Main => GUI::main_menu(),
+        Menu::Start => new_game_init(),
         Menu::Exit => (),
     }
+}
 
+fn new_game_init() {
     // player setup
     let player_name: String = local_io::get_player_name();
     let player: Player = Player::new(player_name);
@@ -38,7 +38,6 @@ fn main() {
     // game loop setup
     let mut game = Gameplay::new(player);
     let mut journals = Journals::new(); // init journals list
-
     GUI::render(GUI::Start(&game.player.name));
     //file::write_player_data(&game);
 
@@ -94,6 +93,5 @@ fn main() {
         // temp break
         break 'mainGameloop;
     }
-
     GUI::render(GUI::End);
 }

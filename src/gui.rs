@@ -41,4 +41,8 @@ impl GUI<'_> {
             }
         }
     }
+
+    pub fn main_menu() {
+        GUI::render(GUI::MainMenu);
+    }
 }
