@@ -19,19 +19,19 @@ pub const ERROR_READING_INPUT: &str = "Failed to read input.";
 
 // Menu and commands
 
-pub const CMD_CONFIRM_Y: &str = "y";
-pub const CMD_CONFIRM_YES: &str = "yes";
+pub const CMD_CONFIRM_Y: &str = "-y";
+pub const CMD_CONFIRM_YES: &str = "-yes";
 
-pub const CMD_GAME_N: &str = "/n";
-pub const CMD_GAME_NEW: &str = "/new";
+pub const CMD_GAME_N: &str = "-n";
+pub const CMD_GAME_NEW: &str = "-new";
 
-pub const CMD_QUIT_E: &str = "/e";
-pub const CMD_QUIT_EXIT: &str = "/exit";
+pub const CMD_QUIT_E: &str = "-e";
+pub const CMD_QUIT_EXIT: &str = "-exit";
 
-pub const CMD_USER_H: &str = "/h";
-pub const CMD_USER_HELP: &str = "/help";
+pub const CMD_USER_H: &str = "-h";
+pub const CMD_USER_HELP: &str = "-help";
 
-pub const CMD_USER_NAME: &str = "/name";
+pub const CMD_USER_NAME: &str = "-name";
 
 // File and IO
 

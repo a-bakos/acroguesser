@@ -18,7 +18,7 @@ impl GUI<'_> {
     pub fn render(item: GUI) {
         match item {
             GUI::Start(player_name) => println!("Hello, {}!\n", player_name),
-            GUI::End => println!("Bye!\n"),
+            GUI::End => println!("Game over!\n"),
             GUI::WaitingPlayerName => println!("Enter a player name:\n"),
             GUI::WaitingGuess => println!("Your guess: "),
             GUI::JournalTitle(title) => println!("Here's the title: {}!\n", title),
@@ -33,8 +33,8 @@ impl GUI<'_> {
             GUI::Exiting => println!("Exiting"),
             GUI::MainMenu => {
                 println!("ACROGUESSER!\n");
-                println!("\t\\N: New game\n");
-                println!("\t\\E: Exit\n");
+                println!("\t-N: New game\n");
+                println!("\t-E: Exit\n");
 
                 // waiting for user choice
                 println!(">> ");

@@ -1,7 +1,13 @@
+use std::io;
+
+use crate::gui::GUI;
+use crate::journal::Journal;
+use crate::journals::Journals;
+use crate::menu::Menu;
 use crate::points::Points;
-use crate::traits;
 use crate::traits::Log;
 use crate::Player;
+use crate::{consts, local_io, misc, traits};
 
 #[derive(Debug)]
 pub struct Gameplay {
@@ -53,6 +59,74 @@ impl Gameplay {
         let status_msg = format!("Added to guess history: {}", &acronym);
         self.status(status_msg.as_str());
         self.history.push(acronym.to_lowercase());
+    }
+
+    pub fn new_game_init() {
+        // player setup
+        let player_name: String = local_io::get_player_name();
+        let player: Player = Player::new(player_name);
+
+        // game loop setup
+        let mut game = Gameplay::new(player);
+        let mut journals = Journals::new(); // init journals list
+        GUI::render(GUI::Start(&game.player.name));
+        //file::write_player_data(&game);
+
+        // gameloop start
+        // outer loop for main rounds
+        'mainGameloop: loop {
+            let mut rounds_counter: u8 = 0;
+            // get a journal to guess
+            let journal: Journal = Journals::get_random_journal(&mut journals, &game);
+
+            'guessRound: loop {
+                GUI::render(GUI::JournalTitle(&journal.title));
+
+                if rounds_counter == consts::MAX_TRIES {
+                    GUI::render(GUI::MaxTriesReached);
+                    break 'guessRound;
+                }
+
+                // deal with guess input
+                let mut user_guess: String = String::new();
+                GUI::render(GUI::WaitingGuess);
+                io::stdin()
+                    .read_line(&mut user_guess)
+                    .expect(consts::ERROR_READING_USER_GUESS);
+                let user_guess: String = user_guess.trim().to_string();
+
+                if user_guess.is_empty() {
+                    GUI::render(GUI::EmptyInput);
+                } else {
+                    if Menu::exit_listener(&user_guess) {
+                        break 'guessRound;
+                    }
+
+                    GUI::render(GUI::YourGuess(&user_guess));
+
+                    if journal.is_matching_guess(&user_guess) {
+                        game.add_points(rounds_counter);
+                        GUI::render(GUI::Win);
+                        journals.drop_journal(journal);
+                        break 'guessRound;
+                    } else {
+                        GUI::render(GUI::TryAgain);
+                    }
+
+                    game.increase_tries();
+                    game.add_to_guess_history(user_guess);
+                    rounds_counter = misc::increase_rounds_counter(&mut rounds_counter);
+                }
+            }
+
+            println!("{:?}", game);
+
+            // temp break
+            break 'mainGameloop;
+        }
+        GUI::render(GUI::End);
+
+        GUI::main_menu();
     }
 }
 
