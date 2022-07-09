@@ -1,3 +1,5 @@
+use colorful::{Color, Colorful};
+
 pub enum GUI<'a> {
     Start(&'a str),
     End,
@@ -22,7 +24,9 @@ impl GUI<'_> {
             GUI::End => println!("Game over!\n"),
             GUI::WaitingPlayerName => println!("Enter a player name:\n"),
             GUI::WaitingGuess => println!("Your guess: "),
-            GUI::JournalTitle(title) => println!("Here's the title: {}!\n", title),
+            GUI::JournalTitle(title) => {
+                println!("Here's the title: {}!\n", title.bg_color(Color::Yellow))
+            }
             GUI::Win => println!("WINNER! You guessed it correctly!"),
             GUI::TryAgain => println!("Try again!"),
             GUI::MaxTriesReached => {
