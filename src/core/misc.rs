@@ -15,6 +15,11 @@ pub fn pause() {
     stdin.read(&mut [0u8]).unwrap();
 }
 
+// Clear the terminal
+pub fn clear_terminal() {
+    print!("{esc}c", esc = 27 as char);
+}
+
 pub fn process_player_name(player_name: String) -> String {
     let mut player_name = player_name.trim().to_string();
     if player_name.is_empty() {

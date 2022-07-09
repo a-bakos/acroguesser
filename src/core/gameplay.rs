@@ -62,6 +62,7 @@ impl Gameplay {
     }
 
     pub fn new_game_init() {
+        misc::clear_terminal();
         // player setup
         let player_name: String = local_io::get_player_name();
         let player: Player = Player::new(player_name);
@@ -126,10 +127,12 @@ impl Gameplay {
         }
         GUI::render(GUI::End);
 
+        misc::clear_terminal();
         GUI::main_menu();
     }
 
     pub fn help() {
+        misc::clear_terminal();
         GUI::help_menu();
         misc::pause();
     }
