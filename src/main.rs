@@ -24,6 +24,12 @@ use crate::traits::Log;
 
 fn main() {
     Menu::main_menu();
+    let menu: Menu = Menu::menu_router();
+    match menu {
+        Menu::Main => (),
+        Menu::Start => (),
+        Menu::Exit => (),
+    }
 
     // player setup
     let player_name: String = local_io::get_player_name();
@@ -32,9 +38,9 @@ fn main() {
     // game loop setup
     let mut game = Gameplay::new(player);
     let mut journals = Journals::new(); // init journals list
-    GUI::render(GUI::Start(&game.player.name));
 
-    file::write_player_data(&game);
+    GUI::render(GUI::Start(&game.player.name));
+    //file::write_player_data(&game);
 
     // gameloop start
     // outer loop for main rounds

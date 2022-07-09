@@ -11,6 +11,7 @@ pub enum GUI<'a> {
     YourGuess(&'a str),
     Confirm,
     Exiting,
+    MainMenu,
 }
 
 impl GUI<'_> {
@@ -30,6 +31,14 @@ impl GUI<'_> {
             GUI::YourGuess(guess) => println!("Your guess was: {}", guess),
             GUI::Confirm => println!("Y or YES to confirm: "),
             GUI::Exiting => println!("Exiting"),
+            GUI::MainMenu => {
+                println!("ACROGUESSER!\n");
+                println!("\t\\N: New game\n");
+                println!("\t\\E: Exit\n");
+
+                // waiting for user choice
+                println!(">> ");
+            }
         }
     }
 }

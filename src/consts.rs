@@ -22,6 +22,9 @@ pub const ERROR_READING_INPUT: &str = "Failed to read input.";
 pub const CMD_CONFIRM_Y: &str = "y";
 pub const CMD_CONFIRM_YES: &str = "yes";
 
+pub const CMD_GAME_N: &str = "/n";
+pub const CMD_GAME_NEW: &str = "/new";
+
 pub const CMD_QUIT_E: &str = "/e";
 pub const CMD_QUIT_EXIT: &str = "/exit";
 

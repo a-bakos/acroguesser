@@ -1,33 +1,37 @@
-use crate::GUI;
+use crate::gameplay::Gameplay;
+use crate::journals::Journals;
+use crate::player::Player;
 use crate::{consts, traits};
+use crate::{local_io, GUI};
 use std::io;
 
-pub struct Menu;
+pub enum Menu {
+    Main,
+    Start,
+    Exit,
+}
+
+// pub struct Menu;
 
 impl traits::Log for Menu {}
 
 impl Menu {
     pub fn main_menu() {
-        // GUI
-        println!("ACROGUESSER!\n");
-        println!("\t\\N: New game\n");
-        // println!("");
-        println!("\t\\E: Exit\n");
-
-        // waiting for user choice
-        println!(">> ");
-        let user_command: String = get_user_input();
-        Menu::menu_router(user_command);
+        GUI::render(GUI::MainMenu);
     }
 
-    fn menu_router(user_command: String) {
+    pub fn menu_router() -> Menu {
+        let user_command: String = get_user_input();
         match user_command.as_str() {
             consts::CMD_QUIT_E | consts::CMD_QUIT_EXIT => {
-                println!("FULL EXIT")
+                if Menu::confirm_exit() {
+                    Menu::Exit
+                } else {
+                    Menu::Main
+                }
             }
-            _ => {
-                println!("something else")
-            }
+            consts::CMD_GAME_N | consts::CMD_GAME_NEW => Menu::Start,
+            _ => Menu::Main,
         }
     }
 
@@ -59,4 +63,16 @@ fn get_user_input() -> String {
     let user_command: String = user_command.trim().to_lowercase().to_string();
 
     user_command
+}
+
+fn new_game_init() {
+    // player setup
+    let player_name: String = local_io::get_player_name();
+    let player: Player = Player::new(player_name);
+
+    // game loop setup
+    let mut game = Gameplay::new(player);
+    let mut journals = Journals::new(); // init journals list
+    GUI::render(GUI::Start(&game.player.name));
+    //file::write_player_data(&game);
 }
