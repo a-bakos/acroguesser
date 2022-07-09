@@ -23,8 +23,7 @@ use std::io;
 use crate::traits::Log;
 
 fn main() {
-
-    Menu::show_main_menu();
+    Menu::main_menu();
 
     // player setup
     let player_name: String = local_io::get_player_name();
