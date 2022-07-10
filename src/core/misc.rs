@@ -9,7 +9,7 @@ pub fn pause() {
     let mut stdout = io::stdout();
     // We want the cursor to stay at the end of the line,
     // so we print without a newline and flush manually.
-    write!(stdout, "\nPress any key to continue...").unwrap();
+    write!(stdout, "\nPress enter to continue...").unwrap();
     stdout.flush().unwrap();
     // Read a single byte and discard
     stdin.read(&mut [0u8]).unwrap();
@@ -90,16 +90,6 @@ fn check_journal_title(journal: &Journal) -> bool {
         return false;
     }
     true
-}
-
-pub fn get_user_input() -> String {
-    let mut user_command: String = String::new();
-    io::stdin()
-        .read_line(&mut user_command)
-        .expect(consts::ERROR_READING_INPUT);
-    let user_command: String = user_command.trim().to_lowercase().to_string();
-
-    user_command
 }
 
 // Unit tests

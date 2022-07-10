@@ -1,5 +1,5 @@
 use crate::core::gui::GUI;
-use crate::core::{consts, misc, traits};
+use crate::core::{consts, local_io, misc, traits};
 
 pub enum Menu {
     Main,
@@ -12,7 +12,8 @@ impl traits::Log for Menu {}
 
 impl Menu {
     pub fn menu_router() -> Menu {
-        let user_command: String = misc::get_user_input();
+        misc::clear_terminal();
+        let user_command: String = local_io::get_user_input();
         match user_command.as_str() {
             consts::CMD_QUIT_E | consts::CMD_QUIT_EXIT => {
                 if Menu::confirm_exit() {
@@ -37,7 +38,7 @@ impl Menu {
 
     fn confirm_exit() -> bool {
         GUI::render(GUI::Confirm);
-        let user_command: String = misc::get_user_input();
+        let user_command: String = local_io::get_user_input();
         if user_command == consts::CMD_CONFIRM_Y || user_command == consts::CMD_CONFIRM_YES {
             GUI::render(GUI::Exiting);
             true

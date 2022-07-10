@@ -16,9 +16,11 @@ fn main() {
             Menu::Start => Gameplay::new_game_init(),
             Menu::Help => {
                 Gameplay::help();
-                continue;
+                // continue;
             }
-            Menu::Exit => break 'menu,
+            Menu::Exit => {
+                break 'menu;
+            }
         };
     }
 }

@@ -109,6 +109,7 @@ impl Gameplay {
                         game.add_points(rounds_counter);
                         GUI::render(GUI::Win);
                         journals.drop_journal(journal);
+                        misc::pause();
                         break 'guessRound;
                     } else {
                         GUI::render(GUI::TryAgain);

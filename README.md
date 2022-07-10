@@ -19,8 +19,8 @@ points in that round.
 - [done] Show title to user
 - [done] Init std input loop to take guesses
 - If guess matches, add points to player's profile
-- Clear console
-- Use colored console prints
+- [done] Clear console
+- [wip] Use colored console prints
 - create status_log.txt if it doesn't exist
 - Build in helper function(s):
 	- User can request a character (and earn less points in exchange)
