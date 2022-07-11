@@ -31,6 +31,7 @@ impl Journals {
         self.used.insert(0, journal);
     }
 
+    // TODO return Option<Journal> instead!
     pub fn get_random_journal(&mut self, game: &Gameplay) -> Journal {
         // machine chosen item
         let len = self.all.len();

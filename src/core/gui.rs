@@ -35,7 +35,7 @@ impl GUI<'_> {
             GUI::EmptyInput => println!("Empty input. Type in your guess."),
             GUI::YourGuess(guess) => println!("Your guess was: {}", guess),
             GUI::Confirm => println!("-Y or -YES to confirm: "),
-            GUI::Exiting => println!("Exiting"),
+            GUI::Exiting => println!("Exiting..."),
             GUI::MainMenu => {
                 println!("ACROGUESSER!\n");
                 println!("\t-N: New game\n");
@@ -46,7 +46,8 @@ impl GUI<'_> {
                 println!(">> ");
             }
             GUI::HelpMenu => {
-                println!("HOW TO PLAY");
+                println!("HOW TO PLAY?\n");
+                println!("instructions here...");
             }
         }
     }

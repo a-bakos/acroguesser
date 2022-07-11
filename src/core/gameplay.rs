@@ -89,12 +89,7 @@ impl Gameplay {
                 }
 
                 // deal with guess input
-                let mut user_guess: String = String::new();
-                GUI::render(GUI::WaitingGuess);
-                io::stdin()
-                    .read_line(&mut user_guess)
-                    .expect(consts::ERROR_READING_USER_GUESS);
-                let user_guess: String = user_guess.trim().to_string();
+                let user_guess: String = local_io::get_user_guess();
 
                 if user_guess.is_empty() {
                     GUI::render(GUI::EmptyInput);
