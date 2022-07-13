@@ -119,7 +119,7 @@ impl Gameplay {
             println!("{:?}", game);
 
             // temp break
-            break 'mainGameloop;
+            // break 'mainGameloop;
         }
         GUI::render(GUI::End);
 
