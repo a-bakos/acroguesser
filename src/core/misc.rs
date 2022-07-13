@@ -33,11 +33,11 @@ pub fn increase_rounds_counter(rounds_counter: &mut u8) -> u8 {
 }
 
 pub fn check_journal(journal: &Journal) -> bool {
-    if !check_journal_acronym(&journal) {
+    if !check_journal_acronym(journal) {
         return false;
     }
 
-    if !check_journal_title(&journal) {
+    if !check_journal_title(journal) {
         return false;
     }
 

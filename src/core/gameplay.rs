@@ -1,5 +1,3 @@
-use std::io;
-
 use crate::core::gui::GUI;
 use crate::core::journal::Journal;
 use crate::core::journals::Journals;

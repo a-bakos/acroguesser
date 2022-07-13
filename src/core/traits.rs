@@ -5,7 +5,7 @@ use std::io::Write;
 
 pub trait Log {
     fn status(&self, msg: &str) {
-        if true == consts::DEBUG_VERBOSE {
+        if consts::DEBUG_VERBOSE {
             let mut log_msg: String = String::new();
             log_msg.push_str(msg);
 
@@ -17,7 +17,7 @@ pub trait Log {
 
             let time: DateTime<Utc> = Utc::now();
 
-            write!(file, "{} {}\n", time, log_msg).ok();
+            writeln!(file, "{} {}", time, log_msg).ok();
         }
     }
 }

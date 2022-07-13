@@ -18,7 +18,7 @@ fn get_stdin() -> String {
 }
 
 pub fn get_user_input() -> String {
-    let user_input: String = get_stdin().trim().to_lowercase().to_string();
+    let user_input: String = get_stdin().trim().to_lowercase();
     user_input
 }
 
