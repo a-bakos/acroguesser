@@ -1,6 +1,4 @@
 use crate::core::consts;
-use crate::core::journal;
-use crate::core::journal::Journal;
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Serialize, Deserialize)]

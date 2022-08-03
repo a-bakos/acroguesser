@@ -10,9 +10,9 @@ points in that round.
 
 **Init:**
 
-- Use an API endpoint to request a list of journals in json format
-	- Data needed to start: journal acronym and title
-- Store journals list locally ?
+- [done] Use an API endpoint to request a list of journals in json format
+	- [done] Data needed to start: journal acronym and title
+- [wip] Store journals list locally ?
 - [done] Ask for player's name
 - [done] Select random title + corresponding acronym
 	- [done] Validate the acronym ([done]trim, [done]check length (4 char max), [done]see if it starts with 0)
@@ -45,3 +45,4 @@ points in that round.
 		- history
 	- reset history
 	- [done] exit
+	- download data
