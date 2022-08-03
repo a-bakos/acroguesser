@@ -24,6 +24,7 @@ pub const CMD_CONFIRM_YES: &str = "-yes";
 
 pub const CMD_GAME_N: &str = "-n";
 pub const CMD_GAME_NEW: &str = "-new";
+pub const CMD_CHEAT: &str = "-cheat";
 
 pub const CMD_QUIT_E: &str = "-e";
 pub const CMD_QUIT_EXIT: &str = "-exit";

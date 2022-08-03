@@ -96,6 +96,17 @@ impl Gameplay {
                         break 'guessRound;
                     }
 
+                    if Menu::cheat_listener(&user_guess) {
+                        println!();
+                        println!("[CHEAT MODE!] Available journals:");
+                        println!();
+                        for j in journals.all.iter() {
+                            println!("\t{} - {}", j.acronym, j.title);
+                        }
+                        println!();
+                        continue;
+                    }
+
                     GUI::render(GUI::YourGuess(&user_guess));
 
                     if journal.is_matching_guess(&user_guess) {

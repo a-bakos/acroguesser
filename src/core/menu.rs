@@ -36,6 +36,10 @@ impl Menu {
         }
     }
 
+    pub fn cheat_listener(user_command: &String) -> bool {
+        user_command == consts::CMD_CHEAT
+    }
+
     fn confirm_exit() -> bool {
         GUI::render(GUI::Confirm);
         let user_command: String = local_io::get_user_input();
