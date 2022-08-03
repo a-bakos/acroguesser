@@ -4,6 +4,7 @@ use crate::core::misc;
 use crate::core::traits;
 use crate::core::traits::Log;
 use rand::{thread_rng, Rng};
+use urlencoding::decode;
 
 use crate::core::api;
 
@@ -30,10 +31,8 @@ impl Journals {
         let mut container = vec![];
 
         for journal in journals.into_iter() {
-            // Todo - process journal data further
-            let processed_title: String = String::new();
-
-            let new_journal = Journal::new(journal.acronym, journal.title.data);
+            let decoded_title: String = decode(&journal.title.data).expect("UTF-8").into_owned();
+            let new_journal = Journal::new(journal.acronym, decoded_title);
             container.push(new_journal);
         }
 

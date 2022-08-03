@@ -13,6 +13,7 @@ points in that round.
 - [done] Use an API endpoint to request a list of journals in json format
 	- [done] Data needed to start: journal acronym and title
 - [wip] Store journals list locally ?
+- [done] Decode title
 - [done] Ask for player's name
 - [done] Select random title + corresponding acronym
 	- [done] Validate the acronym ([done]trim, [done]check length (4 char max), [done]see if it starts with 0)
