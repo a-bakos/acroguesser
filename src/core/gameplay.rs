@@ -97,9 +97,7 @@ impl Gameplay {
                     }
 
                     if Menu::cheat_listener(&user_guess) {
-                        println!();
-                        println!("[CHEAT MODE!] Available journals:");
-                        println!();
+                        println!("\n[CHEAT MODE!] Available journals:\n");
                         for j in journals.all.iter() {
                             println!("\t{} - {}", j.acronym, j.title);
                         }
