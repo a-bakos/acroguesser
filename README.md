@@ -1,4 +1,4 @@
-# ACROGUESSER cli game - practice project
+# ACROGUESSER cli game - practice project - WIP
 
 Simple command line game. The player is presented with a randomly chosen journal
 title and they need to guess the journal's acronym to earn points.
