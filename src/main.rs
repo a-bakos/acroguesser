@@ -1,10 +1,13 @@
 mod core;
 
+use crate::core::api;
 use crate::core::gameplay::Gameplay;
 use crate::core::gui::GUI;
 use crate::core::menu::Menu;
 
 fn main() {
+    api::req();
+
     GUI::main_menu();
 
     'menu: loop {

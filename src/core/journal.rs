@@ -1,7 +1,9 @@
+use serde::{Deserialize, Serialize};
+
 // use crate::consts;
 use crate::core::traits::{self, Log};
 
-#[derive(Debug)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct Journal {
     pub title: String,
     pub acronym: String,

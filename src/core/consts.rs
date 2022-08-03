@@ -40,4 +40,5 @@ pub const FILE_STATUS_DUMP: &str = "status_log.txt";
 
 // API
 
-pub const JOURNALS_API_ENDPOINT: &str = "";
+//pub const JOURNALS_API_ENDPOINT: &str = "https://ayepeaeye.wpengine.com/wp-content/plugins/j_api/read.php?journals=all&fields=acronym,title";
+pub const JOURNALS_API_ENDPOINT: &str = "https://ayepeaeye.wpengine.com/wp-content/plugins/j_api/read.php?journals=BATC&fields=acronym,title";
