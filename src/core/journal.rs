@@ -12,11 +12,8 @@ pub struct Journal {
 impl traits::Log for Journal {}
 
 impl Journal {
-    pub fn new() -> Self {
-        Self {
-            title: String::new(),
-            acronym: String::new(),
-        }
+    pub fn new(acronym: String, title: String) -> Self {
+        Self { acronym, title }
     }
 
     pub fn is_letter_in_acronym(&self, letter: &str) -> bool {

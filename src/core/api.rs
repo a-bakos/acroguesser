@@ -17,7 +17,7 @@ pub fn get_journal_list() -> Vec<RawJournal> {
     temps
 }
 
-pub fn req() -> Result<Vec<RawJournal>, Box<dyn std::error::Error>> {
+fn req() -> Result<Vec<RawJournal>, Box<dyn std::error::Error>> {
     let response: Vec<RawJournal> =
         reqwest::blocking::get(consts::JOURNALS_API_ENDPOINT)?.json()?;
     Ok(response)

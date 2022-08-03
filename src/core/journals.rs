@@ -31,11 +31,9 @@ impl Journals {
 
         for journal in journals.into_iter() {
             // Todo - process journal data further
+            let processed_title: String = String::new();
 
-            let new_journal = Journal {
-                acronym: journal.acronym,
-                title: journal.title.data,
-            };
+            let new_journal = Journal::new(journal.acronym, journal.title.data);
             container.push(new_journal);
         }
 
