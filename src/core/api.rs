@@ -4,18 +4,23 @@ use crate::core::journal::Journal;
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Serialize, Deserialize)]
-struct Test {
-    acronym: String,
-    title: TitleStruct,
+pub struct RawJournal {
+    pub acronym: String,
+    pub title: RawJournalTitle,
 }
 
 #[derive(Debug, Deserialize, Serialize)]
-struct TitleStruct {
-    data: String,
+pub struct RawJournalTitle {
+    pub data: String,
 }
 
-pub fn req() -> Result<(), Box<dyn std::error::Error>> {
-    let response: Vec<Test> = reqwest::blocking::get(consts::JOURNALS_API_ENDPOINT)?.json()?;
-    println!("{:#?}", response);
-    Ok(())
+pub fn get_journal_list() -> Vec<RawJournal> {
+    let temps: Vec<RawJournal> = req().unwrap();
+    temps
+}
+
+pub fn req() -> Result<Vec<RawJournal>, Box<dyn std::error::Error>> {
+    let response: Vec<RawJournal> =
+        reqwest::blocking::get(consts::JOURNALS_API_ENDPOINT)?.json()?;
+    Ok(response)
 }

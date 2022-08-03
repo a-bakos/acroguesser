@@ -5,6 +5,8 @@ use crate::core::traits;
 use crate::core::traits::Log;
 use rand::{thread_rng, Rng};
 
+use crate::core::api;
+
 #[derive(Debug)]
 pub struct Journals {
     pub all: Vec<Journal>,
@@ -17,14 +19,28 @@ impl traits::Log for Journals {}
 impl Journals {
     pub fn new() -> Self {
         Self {
-            all: misc::populate_journals_list(),
+            all: Journals::populate_journals_list(),
             used: vec![],
             //invalid: vec![],
         }
     }
 
-    //pub fn get_journal_list() {}
-    //pub fn store_journal_list(&mut self) {}
+    fn populate_journals_list() -> Vec<Journal> {
+        let journals = api::get_journal_list();
+        let mut container = vec![];
+
+        for journal in journals.into_iter() {
+            // Todo - process journal data further
+
+            let new_journal = Journal {
+                acronym: journal.acronym,
+                title: journal.title.data,
+            };
+            container.push(new_journal);
+        }
+
+        container
+    }
 
     // move journal to used so it's not selected again to guess
     pub fn drop_journal(&mut self, journal: Journal) {
